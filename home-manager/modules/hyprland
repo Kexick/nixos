@@ -1,0 +1,9 @@
+{ pkgs, ... }:
+{
+  wayland.windowManager.hyprland = {
+    enable = true;
+    plugins = [
+      "${pkgs.hyprspace}/lib/lihyprspace.so"
+    ];
+  };
+}
