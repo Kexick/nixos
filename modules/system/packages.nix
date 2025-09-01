@@ -1,5 +1,5 @@
 {
-  quickshell,
+  # quickshell,
   zen,
   pkgs,
   ...
@@ -57,7 +57,7 @@
     python313Packages.nvidia-ml-py
     qt5.qtbase
     qt5.qtgraphicaleffects
-    quickshell.packages.${pkgs.system}.default
+    # quickshell.packages.${pkgs.system}.default
     ranger
     rustc
     swaynotificationcenter

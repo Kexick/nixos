@@ -7,6 +7,7 @@
     linger = true;
     packages = with pkgs; [
       ayugram-desktop
+      easyeffects
       tree
       neovim
       ranger
