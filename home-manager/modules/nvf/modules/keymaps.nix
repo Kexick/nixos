@@ -152,5 +152,23 @@
       action = ":EasyAlign<CR>=<CR>";  
       desc   = "Align by = ";
     }
+    {
+      key    = "<leader>h";
+      mode   = "n";
+      action = ":Gitsigns preview_hunk<CR>";
+      desc   = "Preview changes";
+    }
+    {
+      key    = "<leader>cf";
+      mode   = "n";
+      action = ":Git commit %<CR>";
+      desc   = "Git commit current file";
+    }
+    {
+      key    = "<leader>gd";
+      mode   = "n";
+      action = ":Git add %<CR>";
+      desc   = "Git add current file";
+    }
   ];
 }
