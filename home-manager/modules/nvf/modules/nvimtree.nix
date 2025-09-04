@@ -3,6 +3,8 @@
     enable = true;
     openOnSetup = false;
     setupOpts = {
+      git.enable = true;
+      renderer.highlight_git = true;
       filters.dotfiles = false;
       tab.sync.close   = true;
       tab.sync.open    = true;
@@ -11,7 +13,7 @@
         number         = true;
         relativenumber = true;
         width = {
-          max = 30;
+          max = 50;
           min = 25;
         };
       };
