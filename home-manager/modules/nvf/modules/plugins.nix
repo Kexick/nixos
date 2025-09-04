@@ -2,12 +2,12 @@
   programs.nvf.settings.vim = {
     autopairs.nvim-autopairs.enable = true;
     comments.comment-nvim.enable    = true;
-    dashboard.dashboard-nvim.enable = true;
     formatter.conform-nvim.enable   = true;
     fzf-lua.enable                  = true;
     snippets.luasnip.enable         = true;
     statusline.lualine.enable       = true;
     telescope.enable                = true;
+    git.enable                      = true;
     withNodeJs                      = true;
 
     viAlias = false;
