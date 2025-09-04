@@ -6,7 +6,7 @@
         setupOpts = {
           scope = {
             enabled = true;
-            highlight = "IblScope";
+            # highlight = "IblScope";
           };
           exclude = {
             filetypes = [ "dashboard" "alpha" "lazy" "help" "neo-tree" ];
