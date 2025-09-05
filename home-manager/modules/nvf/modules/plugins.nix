@@ -6,11 +6,11 @@
     fzf-lua.enable                  = true;
     snippets.luasnip.enable         = true;
     statusline.lualine.enable       = true;
-    telescope.enable                = true;
     git.enable                      = true;
     withNodeJs                      = true;
 
     viAlias = false;
     vimAlias = true;
+
   };
 }
