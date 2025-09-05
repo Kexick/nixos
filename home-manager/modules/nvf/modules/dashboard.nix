@@ -24,10 +24,10 @@
             """"
           ];
           center = [
-            { icon = "  "; desc = "New file" ;key = "e"; action = "ene "; }
-            { icon = "󰈞  "; desc = "Find file";key = "f"; action = "Telescope file_borwser"; }
+            { icon = "  "; desc = "New file" ;key = "e"; action = "lua create_new_file_with_browser() "; }
+            { icon = "󰈞  "; desc = "Find file";key = "f"; action = "Telescope file_browser"; }
             { icon = "  "; desc = "Recent   ";key = "r"; action = "Telescope oldfiles"; }
-            { icon = "  "; desc = "Quit     ";key = "q"; action = "qa"; }
+            { icon = "  "; desc = "Quit     ";key = "q"; action = "qa"; icon_hl = "DashboardRed"; }
           ];
           footer = [ 
             """"""""""""""""""""
