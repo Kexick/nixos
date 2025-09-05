@@ -3,19 +3,19 @@
     enable = true;
     openOnSetup = false;
     setupOpts = {
-      git.enable = true;
-      renderer.highlight_git = true;
-      filters.dotfiles = false;
-      tab.sync.close   = true;
-      tab.sync.open    = true;
-      renderer.indent_markers.enable = true;
+      git.enable              = true;
+      tab.sync.close          = true;
+      tab.sync.open           = true;
+      filters.dotfiles        = false;
+
+      renderer = {
+        highlight_git         = true;
+        indent_markers.enable = true;
+      };
       view = {
+        width = { max = 50; min = 25; };
         number         = true;
         relativenumber = true;
-        width = {
-          max = 50;
-          min = 25;
-        };
       };
     };
   };
