@@ -12,6 +12,7 @@
     ./modules/shell.nix
     ./modules/clock-rs.nix
     ./modules/nvf/default.nix
+    ./modules/neovide.nix
     # ../autoimport.nix
   ];
 }
