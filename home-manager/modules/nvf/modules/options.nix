@@ -4,6 +4,6 @@
     scrolloff = 7;
     shiftwidth = 2;
     termguicolors = true;
-    guifont = "Consolas:h14";
+    guifont = "";
   };
 }
