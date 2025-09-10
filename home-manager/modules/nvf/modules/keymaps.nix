@@ -156,19 +156,49 @@
       key    = "<leader>h";
       mode   = "n";
       action = ":Gitsigns preview_hunk<CR>";
-      desc   = "Preview changes";
+      desc   = "Preview changes [Git]";
     }
     {
       key    = "<leader>cf";
       mode   = "n";
       action = ":Git commit %<CR>";
-      desc   = "Git commit current file";
+      desc   = "Commit current file [Git]";
     }
     {
       key    = "<leader>gd";
       mode   = "n";
       action = ":Git add %<CR>";
-      desc   = "Git add current file";
+      desc   = "Add current file [Git]";
+    }
+    {
+      key    = "<leader>ff";
+      mode   = "n";
+      action = ":Telescope file_browser <CR>";
+      desc   = "Find file [File_browser]"; 
+    }
+    {
+      key    = "<A-j>";
+      mode   = "n";
+      action = ":resize -2 <CR>";
+      desc   = "Resize Up"; 
+    }
+    {
+      key    = "<A-k>";
+      mode   = "n";
+      action = ":resize +2 <CR>";
+      desc   = "Resize Down"; 
+    }
+    {
+      key    = "<A-h>";
+      mode   = "n";
+      action = ":vertical resize +2 <CR>";
+      desc   = "Resize Left"; 
+    }
+    {
+      key    = "<A-l>";
+      mode   = "n";
+      action = ":vertical resize -2 <CR>";
+      desc   = "Resize Right"; 
     }
   ];
 }
