@@ -20,6 +20,5 @@ in
     pkgs.hyprshot
     pkgs.mpvpaper
     pkgs.swww
-    pkgs.waytrogen
   ];
 }
