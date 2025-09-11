@@ -4,5 +4,5 @@
     setupOpts = {
       autoload_mode = "Disabled";
     };
-  };
+ };
 }
