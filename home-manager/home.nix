@@ -13,6 +13,7 @@
     ./modules/clock-rs.nix
     ./modules/nvf/default.nix
     ./modules/neovide.nix
+    ./modules/xpropeties.nix
     # ../autoimport.nix
   ];
 }
