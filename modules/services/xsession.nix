@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
 
   security.sudo.extraRules = [{
