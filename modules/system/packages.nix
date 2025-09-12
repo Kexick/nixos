@@ -56,7 +56,7 @@
     prismlauncher
     python313Packages.nvidia-ml-py
     # qt5.qtbase
-    # qt5.qtgraphicaleffects
+    qt5.qtgraphicaleffects
     # quickshell.packages.${pkgs.system}.default
     ranger
     # rustc
