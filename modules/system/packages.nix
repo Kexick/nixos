@@ -12,6 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     wlroots
+    qbittorrent
     gamemode
     avfs
     atool
