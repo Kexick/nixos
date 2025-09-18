@@ -13,8 +13,8 @@ in
   # boot.loader.efi.canTouchEfiVariables = true;
   boot = {
     kernelParams = [
-      # "quiet"
-      # "splash"
+      "quiet"
+      "splash"
       "udev.log_priority=3"
       "boot.shell_on_fail"
       "rd.systemd.show_status=auto"
@@ -28,7 +28,7 @@ in
       "usb_storage"
     ];
     plymouth = {
-      enable        = false;
+      enable        = true;
       theme         = "nixos-bgrt";
       themePackages = with pkgs; [ nixos-bgrt-plymouth ];
     };
