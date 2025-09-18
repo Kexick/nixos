@@ -1,6 +1,6 @@
 {
   services.xray = {
       enable = true;
-      settingsFile = "/home/kexick/.config/xray/roblox.json";
+      settingsFile = "/home/kexick/.config/xray/netherlands.json";
     };
 }
