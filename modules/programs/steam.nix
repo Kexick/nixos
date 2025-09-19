@@ -3,7 +3,7 @@
     steam = {
       enable = true;
       gamescopeSession = {
-        enable = true;
+        enable = false;
         env = {
         WLR_NO_HARDWARE_CURSORS     = "1";
         __GL_GSYNC_ALLOWED          = "0";
