@@ -12,6 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     wlroots
+    syncthing
     qbittorrent
     gamemode
     avfs
@@ -53,6 +54,7 @@
     osu-lazer-bin
     papirus-icon-theme
     playerctl
+    gcc
     plymouth
     prismlauncher
     python313Packages.nvidia-ml-py
