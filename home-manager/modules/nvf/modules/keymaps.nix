@@ -208,12 +208,5 @@
       silent  = true;
       noremap = true;
     }
-    {
-      key    = "<leader>e";
-      mode   = "n";
-      action = ":split | terminal <CR";
-      desc   = "Open terminal in split";
-      silent = true;
-    }
   ];
 }
