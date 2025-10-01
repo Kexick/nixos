@@ -208,5 +208,12 @@
       silent  = true;
       noremap = true;
     }
+    {
+      key = "<leader>m";
+      mode = "n";
+      action = ":make<CR>:cwindow<CR>";
+      desc = "Compile current c file";
+      silent = true;
+    }
   ];
 }
