@@ -200,5 +200,20 @@
       action = ":vertical resize -2 <CR>";
       desc   = "Resize Right"; 
     }
+    {
+      key     = "<Esc>";
+      mode    = "t";
+      action  = "<C-\\><C-n>";
+      desc    = "Unfocus terminal";
+      silent  = true;
+      noremap = true;
+    }
+    {
+      key    = "<leader>e";
+      mode   = "n";
+      action = ":split | terminal <CR";
+      desc   = "Open terminal in split";
+      silent = true;
+    }
   ];
 }
