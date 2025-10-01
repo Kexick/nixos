@@ -14,6 +14,7 @@
     ./modules/nvf/default.nix
     ./modules/neovide.nix
     ./modules/xpropeties.nix
+    ./modules/git.nix
     # ../autoimport.nix
   ];
 }
