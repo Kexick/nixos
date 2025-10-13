@@ -11,6 +11,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    btrfs-progs
+    kdiskmark
+    ironbar
     wlroots
     syncthing
     qbittorrent
@@ -21,6 +24,7 @@
     alsa-utils
     btop-cuda
     # cargo
+    clang-tools
     cava
     chafa
     chromium
