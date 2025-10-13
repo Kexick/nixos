@@ -90,7 +90,8 @@
   ];
 
   fonts.packages = with pkgs; [
-    dina-font
+     virt-manager
+     dina-font
     dejavu_fonts
     fira-code
     fira-code-symbols
