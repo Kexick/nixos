@@ -11,6 +11,10 @@
   };
 
   environment.systemPackages = with pkgs; [
+    xorg.xcursorgen
+    xcur2png 
+    imagemagick
+    win2xcur
     btrfs-progs
     kdiskmark
     ironbar
@@ -20,6 +24,7 @@
     gamemode
     avfs
     atool
+    qtemu
     adwaita-icon-theme
     alsa-utils
     btop-cuda
@@ -88,28 +93,4 @@
     zen.packages.${pkgs.system}.default
     zsh-powerlevel10k
   ];
-
-  fonts.packages = with pkgs; [
-     virt-manager
-     dina-font
-    dejavu_fonts
-    fira-code
-    fira-code-symbols
-    hack-font
-    liberation_ttf
-    mplus-outline-fonts.githubRelease
-    nerd-fonts.droid-sans-mono
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.ubuntu
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    proggyfonts
-    roboto-mono
-    ubuntu-sans
-    ubuntu-sans-mono
-    vista-fonts
-  ];
-
 }
