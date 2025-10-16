@@ -1,11 +1,12 @@
 {
     import = [
 
-        ../system/gc.nix
-        ../system/boot.nix
-        ../system/fonts.nix
-        ../system/coredump.nix
-        ../system/journald.nix
-
+        ../modules/system/boot.nix
+        ../modules/system/coredump.nix
+        ../modules/system/env.nix
+        ../modules/system/fonts.nix
+        ../modules/system/gc.nix
+        ../modules/system/journald.nix
+        ../modules/system/network.nix
     ];
 }
