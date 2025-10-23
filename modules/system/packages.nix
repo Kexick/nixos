@@ -11,6 +11,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    discord
     xorg.xcursorgen
     xcur2png 
     imagemagick
