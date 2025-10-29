@@ -11,6 +11,7 @@
       tree
       neovim
       ranger
+      termusic
     ];
   };
 }
