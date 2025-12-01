@@ -11,6 +11,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    sshfs
+    hiddify-app
+    yt-dlp
     webcord
     xorg.xcursorgen
     xcur2png 
@@ -85,7 +88,9 @@
     vulkan-validation-layers
     walker
     wget
-    wineWowPackages.waylandFull
+    wineWowPackages.staging
+    winetricks
+    # wineWowPackages.waylandFull
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-utils
