@@ -32,7 +32,7 @@
       reboot      = "pkill chromium -15; sleep 1; reboot";
       nconf       = "sudo nvim /etc/nixos/configuration.nix";
       pkglist     = "sudo nvim /etc/nixos/modules/packages.nix";
-      nfr         = "nixos-rebuild switch --use-remote-sudo --flake /etc/nixos";
+      nfr         = "nixos-rebuild switch --sudo --flake /etc/nixos";
       generations = "sudo nix-env --list-generations -p /nix/var/nix/profiles/system";
     };
   };
