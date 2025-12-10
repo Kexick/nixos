@@ -11,8 +11,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    vesktop
     sshfs
-    hiddify-app
     yt-dlp
     webcord
     xorg.xcursorgen
@@ -62,6 +62,7 @@
     nh
     nixd
     nixpkgs-fmt
+    nftables
     # ntfs3g
     obsidian
     osu-lazer-bin
@@ -74,6 +75,7 @@
     # qt5.qtbase
     qt5.qtgraphicaleffects
     # quickshell.packages.${pkgs.system}.default
+    libsForQt5.qt5.qtgraphicaleffects
     ranger
     # rustc
     # swaynotificationcenter
