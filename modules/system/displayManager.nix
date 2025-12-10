@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   services.xserver.displayManager.startx.enable = true;
   services = {
@@ -11,7 +12,7 @@
 
       sddm = {
         enable = true;
-        theme = "/usr/share/sddm/themes/sugarcandy/";
+        theme = "/usr/share/sddm/themes/sugarcandy";
       };
     };
   };
