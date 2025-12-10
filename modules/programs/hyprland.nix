@@ -2,7 +2,6 @@
   pkgs,
   hyprland-plugins,
   hyprspace,
-  hyprsession,
   ...
 }:
 let
@@ -14,7 +13,6 @@ in
     # hyprspace.packages.${pkgs.system}.default
     # pkgs.hyprland-qtutils
     # hp.hyprexpo
-    hyprsession.packages.${pkgs.system}.hyprsession
     pkgs.hyprlandPlugins.hyprspace
     pkgs.hyprcursor
     pkgs.hyprls
@@ -29,5 +27,8 @@ in
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
     ];
+    config = {
+        common.default = [ "hyprland" "gtk" ];
+    };
   };
 }
