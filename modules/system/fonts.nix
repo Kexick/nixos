@@ -14,7 +14,7 @@
     nerd-fonts.ubuntu
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     proggyfonts
     roboto-mono
     ubuntu-sans
