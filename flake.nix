@@ -3,9 +3,9 @@
 
   inputs = {
 
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixos-25.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf = {
@@ -15,9 +15,6 @@
     zen = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprsession = {
-      url = "github:joshurtree/hyprsession";
     };
     # hyprland.url = "github:hyprwm/Hyprland/v0.49.0";
     # hyprland-plugins = {
@@ -41,7 +38,6 @@
       # hyprspace,
       nixpkgs,
       nvf,
-      hyprsession,
       # hyprland,
       # hyprland-plugins,
       # quickshell,
@@ -70,7 +66,6 @@
         specialArgs = {
           inherit
             zen
-            hyprsession
             # hyprland-plugins
             # hyprspace
             # quickshell
