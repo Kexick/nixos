@@ -12,7 +12,11 @@
 
       sddm = {
         enable = true;
-        theme = "/usr/share/sddm/themes/sugarcandy";
+        theme = "story-dark";
+        settings.Theme.ThemeDir = "/usr/share/sddm/themes";
+        extraPackages = [
+            pkgs.kdePackages.qt5compat
+        ];
       };
     };
   };
