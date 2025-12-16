@@ -10,7 +10,7 @@
   imports = [
   ./modules/mangohud.nix 
     ./modules/hyprland-plugins.nix
-    ./modules/anime-launcher.nix
+    # ./modules/anime-launcher.nix
     ./modules/shell.nix
     ./modules/clock-rs.nix
     # ./modules/nvf/default.nix
