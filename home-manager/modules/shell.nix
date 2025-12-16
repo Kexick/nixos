@@ -23,6 +23,7 @@
       ];
     };
     shellAliases = {
+      dot         = "git --git-dir=$HOME/.dotfiles --work-tree=$HOME";
       fm          = "sudo -E ranger";
       # ss          = "systemctl suspend";
       gc          = "sudo nix-collect-garbage -d";
