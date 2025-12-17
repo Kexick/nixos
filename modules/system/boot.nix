@@ -9,9 +9,20 @@ let
 in
 {
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader = {
+      systemd-boot.enable = false;
+      efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot";
+      timeout = 1;
+      grub = {
+          enable      = true;
+          device      = "nodev";
+          gfxmodeEfi  = "1680x1050";
+          efiSupport  = true;
+          useOSProber = true;
+          theme       = "${lainTheme}/lain";
+      };
+  };
   boot = {
     kernelParams = [
       "quiet"
@@ -32,15 +43,6 @@ in
       enable        = true;
       theme         = "nixos-bgrt";
       themePackages = with pkgs; [ nixos-bgrt-plymouth ];
-    };
-    loader.timeout = 1;
-    loader.grub = {
-      enable      = true;
-      device      = "nodev";
-      gfxmodeEfi  = "1680x1050";
-      efiSupport  = true;
-      useOSProber = true;
-      theme       = "${lainTheme}/lain";
     };
   };
 }
