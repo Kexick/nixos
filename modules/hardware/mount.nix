@@ -58,7 +58,10 @@
       };
 
   };
-  swapDevices = [{ device = "/swap/swapfile"; size = 16384; }];
+  swapDevices = [{
+      device = "/swap/swapfile";
+      size = 32768; 
+  }];
 
 # "/mnt/hdd1" = {
 # 	device = "/dev/disk/by-uuid/B038304438300C3A";
