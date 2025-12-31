@@ -12,6 +12,7 @@
       neovim
       ranger
       termusic
+      media-downloader
     ];
   };
 }
