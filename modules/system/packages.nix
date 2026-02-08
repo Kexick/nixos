@@ -93,8 +93,8 @@
     wineWowPackages.staging
     winetricks
     # wineWowPackages.waylandFull
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
+    # xdg-desktop-portal
+    # xdg-desktop-portal-gtk
     xdg-utils
     xray
     youtube-music

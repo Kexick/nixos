@@ -3,9 +3,8 @@
 {
   systemd.user.services.clock-rs = {
     description = "Hyprland clock-rs";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
+    wantedBy = [ "default.target" ];
+    after = [ "default.target" ];
 
     unitConfig = {
       ConditionPathExistsGlob = "%t/hypr/*/.socket2.sock";
