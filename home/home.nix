@@ -11,8 +11,7 @@
     ./modules/apps/neovide.nix
     ./modules/core/git.nix
     ./modules/core/shell.nix
-    ./modules/desktop/hypr/hypridle.nix
-    ./modules/desktop/hypr/hyprland-plugins.nix
+    ./modules/desktop/hyprland/default.nix
     ./modules/tools/mangohud.nix
   ];
 }
