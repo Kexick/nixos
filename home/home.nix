@@ -6,15 +6,13 @@
   };
 
   imports = [
-    ./modules/mangohud.nix
-    ./modules/hyprland-plugins.nix
-    ./modules/anime-launcher.nix
-    ./modules/shell.nix
-    ./modules/clock-rs.nix
-    # ./modules/nvf/default.nix
-    ./modules/neovide.nix
-    ./modules/xpropeties.nix
-    ./modules/git.nix
-    # ../autoimport.nix
+    ./modules/core/git.nix
+    ./modules/core/shell.nix
+    ./modules/desktop/anime-launcher.nix
+    ./modules/desktop/clock-rs.nix
+    ./modules/desktop/hypridle.nix
+    ./modules/desktop/hyprland-plugins.nix
+    ./modules/desktop/mangohud.nix
+    ./modules/desktop/neovide.nix
   ];
 }

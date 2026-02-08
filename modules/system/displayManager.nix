@@ -1,21 +1,21 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.xserver.displayManager.startx.enable = true;
+
   services = {
     displayManager = {
-      ly.enable        = false;
+      ly.enable = false;
 
-      autoLogin = { 
+      autoLogin = {
         enable = false;
-        user   = "kexick";
+        user = "kexick";
       };
 
       sddm = {
-        enable = true;
+        enable = false;
         theme = "story-dark";
         settings.Theme.ThemeDir = "/usr/share/sddm/themes";
         extraPackages = [
-            pkgs.kdePackages.qt5compat
+          pkgs.kdePackages.qt5compat
         ];
       };
     };

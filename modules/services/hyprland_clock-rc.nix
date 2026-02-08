@@ -1,5 +1,5 @@
 { pkgs, ... }:
-
+ 
 {
   systemd.user.services.clock-rs = {
     description = "Hyprland clock-rs";

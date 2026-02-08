@@ -1,28 +1,54 @@
-{ pkgs, ... }:
-let
-  lainTheme = pkgs.fetchFromGitHub {
-    owner  = "uiriansan";
-    repo   = "LainGrubTheme";
-    rev    = "main";
-    sha256 = "sha256-gDwNolJ28UQUjE2G2U0bvzh29E9EEiet9SlItbY46IQ";
-  };
-in
 {
-  # Use the systemd-boot EFI boot loader.
-  boot.loader = {
-      systemd-boot.enable = false;
-      efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot";
-      timeout = 1;
-      grub = {
-          enable      = true;
-          device      = "nodev";
-          gfxmodeEfi  = "1680x1050";
-          efiSupport  = true;
-          useOSProber = true;
-          theme       = "${lainTheme}/lain";
-      };
+  pkgs,
+  inputs,
+  config,
+  ...
+}: let
+  Theme = pkgs.fetchFromGitHub {
+    owner = "Lxtharia";
+    repo = "minegrub-theme";
+    rev = "main";
+    sha256 = "sha256-GvlAAIpM/iZtl/EtI+LTzEsQ2qlUkex9i4xRUZXmadM=";
   };
+in {
+  boot.loader = {
+    systemd-boot.enable = false;
+    efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot";
+    timeout = 10;
+    grub = {
+      enable = true;
+      device = "nodev";
+      gfxmodeEfi = "2560x1440";
+      efiSupport = true;
+      useOSProber = true;
+      minegrub-world-sel = {
+        enable = true;
+
+        customIcons = with config.system; [
+          {
+            inherit name;
+
+            lineTop = with nixos;
+              distroName + " " + codeName + " (" + version + ")";
+
+            lineBottom =
+              "Survival Mode, No Cheats, Version: " + nixos.release;
+
+            # Use an icon from the remote repo
+            imgName = "nixos";
+
+            # Or load from a local file
+            # customImg = builtins.path {
+            #   path = ./nixos-logo.png;
+            #   name = "nixos-img";
+            # };
+          }
+        ];
+      };
+    };
+  };
+
   boot = {
     kernelParams = [
       "quiet"
@@ -31,7 +57,7 @@ in
       "boot.shell_on_fail"
       "rd.systemd.show_status=auto"
     ];
-    supportedFilesystems = [ "ntfs3" ];
+
     initrd.kernelModules = [
       "tun"
       "xhci_pci"
@@ -39,10 +65,11 @@ in
       "uhci_hcd"
       "usb_storage"
     ];
+
     plymouth = {
-      enable        = true;
-      theme         = "nixos-bgrt";
-      themePackages = with pkgs; [ nixos-bgrt-plymouth ];
+      enable = true;
+      theme = "nixos-bgrt";
+      themePackages = with pkgs; [nixos-bgrt-plymouth];
     };
   };
 }

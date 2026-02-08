@@ -1,8 +1,7 @@
-{pkgs, ...}:
-{
+{pkgs, ...}: {
   users.users.kexick = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "render" "videо"];
+    extraGroups = ["wheel" "input" "render" "videо"];
     shell = pkgs.zsh;
     linger = true;
     packages = with pkgs; [
@@ -13,6 +12,8 @@
       ranger
       termusic
       media-downloader
+      obs-studio
+      nemo
     ];
   };
 }

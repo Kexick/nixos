@@ -1,7 +1,7 @@
 {
   services.hypridle = {
     enable = true;
-    settigs = {
+    settings = {
       gemeral = {
         before_sleep_cmd = ":";
       };

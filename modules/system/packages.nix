@@ -1,22 +1,23 @@
 {
-  # quickshell,
-  zen,
+  inputs,
   pkgs,
   ...
-}:
-{
-
+}: {
   nixpkgs.config = {
     allowUnfree = true;
   };
 
   environment.systemPackages = with pkgs; [
+    fzf
+    fd
+    ripgrep
+    bash-language-server
+    lua-language-server
     vesktop
     sshfs
     yt-dlp
-    webcord
     xorg.xcursorgen
-    xcur2png 
+    xcur2png
     imagemagick
     win2xcur
     btrfs-progs
@@ -24,6 +25,7 @@
     ironbar
     wlroots
     syncthing
+    topiary
     qbittorrent
     gamemode
     avfs
@@ -58,10 +60,10 @@
     mako
     mangohud
     mpv
-    neovim
     nh
     nixd
     nixpkgs-fmt
+    alejandra
     nftables
     # ntfs3g
     obsidian
@@ -98,7 +100,7 @@
     xdg-utils
     xray
     youtube-music
-    zen.packages.${pkgs.system}.default
+    inputs.zen.packages.${pkgs.stdenv.hostPlatform.system}.default
     zsh-powerlevel10k
   ];
 }
