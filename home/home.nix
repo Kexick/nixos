@@ -6,9 +6,7 @@
   };
 
   imports = [
-    ./modules/apps/anime-launcher.nix
-    ./modules/apps/clock-rs.nix
-    ./modules/apps/neovide.nix
+    ./modules/apps/default.nix
     ./modules/core/git.nix
     ./modules/core/shell.nix
     ./modules/desktop/hyprland/default.nix
