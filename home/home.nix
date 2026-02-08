@@ -6,13 +6,13 @@
   };
 
   imports = [
+    ./modules/apps/anime-launcher.nix
+    ./modules/apps/clock-rs.nix
+    ./modules/apps/neovide.nix
     ./modules/core/git.nix
     ./modules/core/shell.nix
-    ./modules/desktop/anime-launcher.nix
-    ./modules/desktop/clock-rs.nix
     ./modules/desktop/hypridle.nix
     ./modules/desktop/hyprland-plugins.nix
-    ./modules/desktop/mangohud.nix
-    ./modules/desktop/neovide.nix
+    ./modules/tools/mangohud.nix
   ];
 }
