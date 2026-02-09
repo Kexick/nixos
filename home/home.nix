@@ -7,9 +7,8 @@
 
   imports = [
     ./modules/apps/default.nix
-    ./modules/core/git.nix
-    ./modules/core/shell.nix
+    ./modules/core/default.nix
     ./modules/desktop/hyprland/default.nix
-    ./modules/tools/mangohud.nix
+    ./modules/tools/default.nix
   ];
 }
