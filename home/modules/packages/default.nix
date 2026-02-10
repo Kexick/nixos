@@ -1,7 +1,7 @@
 {...}: {
   imports = [
-    ./anime-launcher.nix
-    ./clock-rs.nix
-    ./neovide.nix
+    ./media/default.nix
+    ./personal/default.nix
+    ./utils/default.nix
   ];
 }

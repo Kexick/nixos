@@ -6,7 +6,7 @@
   };
 
   imports = [
-    ./modules/apps/default.nix
+    ./modules/packages/default.nix
     ./modules/core/default.nix
     ./modules/desktop/hyprland/default.nix
     ./modules/tools/default.nix

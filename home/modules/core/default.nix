@@ -3,7 +3,7 @@
     ./git.nix
     ./shell.nix
   ];
-  home.packeges = with pkgs; [
+  home.packages = with pkgs; [
     tree
   ];
 }
