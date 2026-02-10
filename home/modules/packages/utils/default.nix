@@ -1,0 +1,5 @@
+{...}: {
+  import = [
+    ./clock-rs.nix
+  ];
+}
