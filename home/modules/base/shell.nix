@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # environment.systemPackages = pkgs.zsh-powerlevel10k;
   programs.zsh = {
     enable = true;
@@ -23,17 +21,17 @@
       ];
     };
     shellAliases = {
-      dot         = "git --git-dir=$HOME/.dotfiles --work-tree=$HOME";
-      fm          = "sudo -E ranger";
+      dot = "git --git-dir=$HOME/.dotfiles --work-tree=$HOME";
+      fm = "sudo -E ranger";
       # ss          = "systemctl suspend";
-      gc          = "sudo nix-collect-garbage -d";
-      ff          = "sh ~/.config/fastfetch/ff.sh";
-      nrebs       = "sudo nixos-rebuild switch";
-      hfr         = "home-manager switch --flake /etc/nixos";
-      reboot      = "pkill chromium -15; sleep 1; reboot";
-      nconf       = "sudo nvim /etc/nixos/configuration.nix";
-      pkglist     = "sudo nvim /etc/nixos/modules/packages.nix";
-      nfr         = "nixos-rebuild switch --sudo --flake /etc/nixos";
+      gc = "sudo nix-collect-garbage -d";
+      ff = "sh ~/.config/fastfetch/ff.sh";
+      nrebs = "sudo nixos-rebuild switch";
+      hfr = "home-manager switch --flake /etc/nixos";
+      reboot = "pkill chromium -15; sleep 1; reboot";
+      nconf = "sudo nvim /etc/nixos/configuration.nix";
+      pkglist = "sudo nvim /etc/nixos/modules/packages.nix";
+      nfr = "nixos-rebuild switch --sudo --flake /etc/nixos";
       generations = "sudo nix-env --list-generations -p /nix/var/nix/profiles/system";
     };
   };
