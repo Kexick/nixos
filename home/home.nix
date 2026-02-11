@@ -6,9 +6,9 @@
   };
 
   imports = [
-    ./modules/packages/default.nix
-    ./modules/core/default.nix
-    ./modules/desktop/hyprland/default.nix
-    ./modules/tools/default.nix
+    ./modules/apps/default.nix
+    ./modules/base/default.nix
+    ./modules/dev/default.nix
+    ./modules/desktop/default.nix
   ];
 }

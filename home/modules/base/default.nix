@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./git.nix
-    ./shell.nix
+    ./cli/clock-rs.nix
+    ./shell/shell.nix
   ];
   home.packages = with pkgs; [
     tree
