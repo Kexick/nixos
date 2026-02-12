@@ -39,6 +39,7 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
+        ./hosts/desktop/default.nix
         ./configuration.nix
         ./autoimport.nix
         inputs.minegrub-world-sel-theme.nixosModules.default
