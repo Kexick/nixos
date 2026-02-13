@@ -40,7 +40,7 @@
       inherit system;
       modules = [
         ./hosts/desktop/default.nix
-        ./configuration.nix
+        ./modules/core/state.nix
         ./autoimport.nix
         inputs.minegrub-world-sel-theme.nixosModules.default
         hyprland.nixosModules.default
