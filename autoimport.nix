@@ -1,5 +1,5 @@
 {lib, ...}: {
-  importNixFilesExceptDefault = dir: let
+  importNixModules = dir: let
     entries = builtins.readDir dir;
     names = builtins.attrNames entries;
 
