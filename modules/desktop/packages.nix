@@ -8,6 +8,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    p7zip
     fzf
     fd
     ripgrep
