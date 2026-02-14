@@ -42,9 +42,7 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
-        ./hosts/desktop/default.nix
-        ./modules/core/state.nix
-        ./autoimport.nix
+        ./hosts/desktop
         inputs.minegrub-world-sel-theme.nixosModules.default
         hyprland.nixosModules.default
       ];
