@@ -9,6 +9,8 @@
 
   environment.systemPackages = with pkgs; [
     p7zip
+    openbox
+    openbox-menu
     fzf
     fd
     ripgrep
