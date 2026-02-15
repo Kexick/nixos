@@ -1,10 +1,9 @@
-{pkgs, ...}: {
+{...}: {
   programs = {
     steam = {
       enable = true;
       gamescopeSession = {
         enable = false;
-        extraCompatPackages = with pkgs; [proton-ge-custom];
         env = {
           WLR_NO_HARDWARE_CURSORS = "1";
           __GL_GSYNC_ALLOWED = "0";
