@@ -7,7 +7,7 @@
       };
       listener = {
         timeout = 600;
-        command = "systemclt sleep";
+        command = "systemctl suspend";
       };
     };
   };
