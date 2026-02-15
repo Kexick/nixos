@@ -66,6 +66,10 @@ in {
       "usb_storage"
     ];
 
+    tmp = {
+      useTmpfs = true;
+    };
+
     plymouth = {
       enable = true;
       theme = "nixos-bgrt";
