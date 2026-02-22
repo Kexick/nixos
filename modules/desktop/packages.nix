@@ -11,6 +11,7 @@
     p7zip
     openbox
     openbox-menu
+    make
     fzf
     fd
     ripgrep
