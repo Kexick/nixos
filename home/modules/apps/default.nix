@@ -7,5 +7,6 @@
     nemo
     ayugram-desktop
     wf-recorder
+    obs-studio
   ];
 }
