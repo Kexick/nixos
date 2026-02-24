@@ -11,7 +11,7 @@
     p7zip
     openbox
     openbox-menu
-    make
+    gnumake
     fzf
     fd
     ripgrep
