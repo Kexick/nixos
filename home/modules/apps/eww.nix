@@ -7,5 +7,7 @@
     translate-shell
     ffmpegthumbnailer
     ffmpeg
+    mpb
+    mpc
   ];
 }
