@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./cli/clock-rs.nix
     ./shell/shell.nix
+    ./shell/tmux.nix
   ];
   home.packages = with pkgs; [
     tree
