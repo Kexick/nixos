@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   imports = [
-    ./anime-launcher.nix
     ./eww.nix
+    ./wine.nix
+    ./alacritty.nix
   ];
   home.packages = with pkgs; [
     nemo
