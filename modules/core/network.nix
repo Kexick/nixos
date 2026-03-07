@@ -1,4 +1,5 @@
-{
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.proxychains-ng];
   networking = {
     hostName = "nixos"; # Define your hostname.
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -9,11 +10,19 @@
           from = 1714;
           to = 1764;
         }
+        {
+          from = 443;
+          to = 5100;
+        }
       ];
       allowedUDPPortRanges = [
         {
           from = 1714;
           to = 1764;
+        }
+        {
+          from = 19364;
+          to = 46796;
         }
       ];
     };
