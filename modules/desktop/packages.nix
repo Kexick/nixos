@@ -9,8 +9,6 @@
 
   environment.systemPackages = with pkgs; [
     p7zip
-    openbox
-    openbox-menu
     gnumake
     fzf
     fd
@@ -38,28 +36,21 @@
     adwaita-icon-theme
     alsa-utils
     btop-cuda
-    # cargo
     clang-tools
     cava
     chafa
     chromium
     clock-rs
-    # cmake
     curl
-    # eww
     fastfetch
     foot
-    # gcc
     git
-    # gnumake
     heroic
     home-manager
     inkscape-with-extensions
     ipset
     iptables
-    # kdePackages.qtdeclarative
     libnotify
-    # libsForQt5.qt5.qtdeclarative
     lutris
     mako
     mangohud
@@ -69,7 +60,6 @@
     nixpkgs-fmt
     alejandra
     nftables
-    # ntfs3g
     obsidian
     osu-lazer-bin
     papirus-icon-theme
@@ -78,13 +68,9 @@
     plymouth
     prismlauncher
     python313Packages.nvidia-ml-py
-    # qt5.qtbase
     qt5.qtgraphicaleffects
-    # quickshell.packages.${pkgs.system}.default
     libsForQt5.qt5.qtgraphicaleffects
     ranger
-    # rustc
-    # swaynotificationcenter
     telegram-desktop
     testdisk
     ueberzugpp
@@ -96,14 +82,8 @@
     vulkan-validation-layers
     walker
     wget
-    wineWowPackages.staging
-    winetricks
-    # wineWowPackages.waylandFull
-    # xdg-desktop-portal
-    # xdg-desktop-portal-gtk
     xdg-utils
     xray
-    youtube-music
     inputs.zen.packages.${pkgs.stdenv.hostPlatform.system}.default
     zsh-powerlevel10k
   ];
