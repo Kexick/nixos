@@ -1,5 +1,5 @@
 {...}: {
   environment.variables = {
-    NVD_BACKAND = "direct";
+    NVD_BACKEND = "direct";
   };
 }
