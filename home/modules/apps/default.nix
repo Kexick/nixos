@@ -3,6 +3,7 @@
     ./eww.nix
     ./wine.nix
     ./alacritty.nix
+    ./foot.nix
   ];
   home.packages = with pkgs; [
     nemo
