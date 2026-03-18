@@ -22,6 +22,7 @@
       url = "github:Lxtharia/minegrub-world-sel-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mcp-hub.url = "github:ravitemer/mcp-hub";
 
     hyprland.url = "github:hyprwm/Hyprland/v0.54.0";
   };
