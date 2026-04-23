@@ -1,32 +1,27 @@
 {
   inputs,
   pkgs,
-  hyprland-plugins,
-  hyprspace,
   ...
-}: let
-  hp = hyprland-plugins.packages.${pkgs.system};
-in {
+}: {
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  environment.systemPackages = [
-    # hyprspace.packages.${pkgs.system}.default
-    # pkgs.hyprland-qtutils
-    # hp.hyprexpo
-    pkgs.hyprlandPlugins.hyprspace
-    pkgs.hyprcursor
-    pkgs.hyprls
-    pkgs.hyprpaper
-    pkgs.hyprshot
-    pkgs.mpvpaper
-    pkgs.swww
-    pkgs.grim
-    pkgs.slurp
-    pkgs.satty
+  environment.systemPackages = with pkgs; [
+    hyprlandPlugins.hyprspace
+    hyprcursor
+    hyprls
+    hyprlock
+    hyprpaper
+    hyprshot
+    mpvpaper
+    swww
+    grim
+    slurp
+    satty
+    dunst
   ];
 
   xdg.portal = {
@@ -48,4 +43,8 @@ in {
   };
 
   services.gvfs.enable = true;
+
+  security.pam.services.hyprlock = {
+    enable = true;
+  };
 }
