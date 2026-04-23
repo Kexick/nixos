@@ -3,29 +3,27 @@
     steam = {
       enable = true;
       gamescopeSession = {
-        enable = false;
+        enable = true;
         env = {
-          WLR_NO_HARDWARE_CURSORS = "1";
-          __GL_GSYNC_ALLOWED = "0";
-          __GL_VRR_ALLOWED = "0";
+          __GL_SYNC_TO_VBLANK = "0";
+          __GL_MaxFramesAllowed = "1";
           __GL_THREADED_OPTIMIZATIONS = "1";
           __GL_SHADER_DISK_CACHE = "1";
           __GL_SHADER_DISK_CACHE_PATH = "/home/kexick/.cache/nvidia";
-          __GL_YIELD = "USLEEP";
-          vblank_mode = "0";
+          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         };
         args = [
           "-e"
           "-f"
-          "-g"
           "--rt"
-          "-H 2560"
-          "-W 1440"
+          "-H"
+          "2560"
+          "-W"
+          "1440"
           "--mangoapp"
-          "--disable-vrr"
-          "--force-grab-cursor"
-          # "--xwayland-count 1"
-          "--hide-cursor-delay -1"
+          "--force-composition"
+          "--backend"
+          "sdl"
         ];
       };
     };
