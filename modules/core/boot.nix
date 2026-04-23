@@ -3,14 +3,7 @@
   inputs,
   config,
   ...
-}: let
-  Theme = pkgs.fetchFromGitHub {
-    owner = "Lxtharia";
-    repo = "minegrub-theme";
-    rev = "main";
-    sha256 = "sha256-GvlAAIpM/iZtl/EtI+LTzEsQ2qlUkex9i4xRUZXmadM=";
-  };
-in {
+}: {
   boot.loader = {
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
@@ -35,14 +28,7 @@ in {
             lineBottom =
               "Survival Mode, No Cheats, Version: " + nixos.release;
 
-            # Use an icon from the remote repo
             imgName = "nixos";
-
-            # Or load from a local file
-            # customImg = builtins.path {
-            #   path = ./nixos-logo.png;
-            #   name = "nixos-img";
-            # };
           }
         ];
       };
@@ -56,7 +42,10 @@ in {
       "udev.log_priority=3"
       "boot.shell_on_fail"
       "rd.systemd.show_status=auto"
+      "resume_offset=86076043"
     ];
+
+    resumeDevice = config.fileSystems."/swap".device;
 
     initrd.kernelModules = [
       "tun"
