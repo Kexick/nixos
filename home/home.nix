@@ -4,6 +4,7 @@
     homeDirectory = "/home/kexick";
     stateVersion = "25.05";
   };
+  news.display = "silent";
 
   imports = [
     ./modules/apps/default.nix

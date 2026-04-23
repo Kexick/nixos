@@ -7,5 +7,6 @@
     ../../modules/hardware
     ../../modules/programs
     ../../modules/services
+    ../../modules/security/sops.nix
   ];
 }

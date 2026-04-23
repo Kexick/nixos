@@ -22,9 +22,18 @@
       url = "github:Lxtharia/minegrub-world-sel-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mcp-hub.url = "github:ravitemer/mcp-hub";
 
     hyprland.url = "github:hyprwm/Hyprland/v0.54.0";
+
+    mcp-hub = {
+      url = "github:ravitemer/mcp-hub";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -32,6 +41,7 @@
     nixpkgs,
     nvf,
     hyprland,
+    sops-nix,
     zen,
     ...
   }: let
@@ -46,6 +56,7 @@
         ./hosts/desktop
         inputs.minegrub-world-sel-theme.nixosModules.default
         hyprland.nixosModules.default
+        sops-nix.nixosModules.sops
       ];
       specialArgs = {
         inherit
@@ -57,6 +68,7 @@
 
     homeConfigurations.kexick = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = {inherit inputs;};
       modules = [
         ./home/home.nix
         nvf.homeManagerModules.default
