@@ -66,6 +66,8 @@
 
       set -g pane-border-lines simple
 
+      set -gq terminal-features "foot*:sixel"
+
     '';
 
     plugins = with pkgs.tmuxPlugins; [
