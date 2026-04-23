@@ -30,7 +30,12 @@
     topiary
     qbittorrent
     gamemode
+    evemu
+    ydotool
+    piper-tts
+    whisper-cpp
     avfs
+    javaPackages.compiler.openjdk25
     atool
     qtemu
     adwaita-icon-theme
@@ -52,8 +57,8 @@
     iptables
     libnotify
     lutris
-    mako
     mangohud
+    luarocks
     mpv
     nh
     nixd
