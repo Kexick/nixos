@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.nvf.settings = {
     vim.options.signcolumn = "yes";
     vim.luaConfigRC.diagnostics = ''
@@ -14,7 +12,7 @@
     '';
   };
   programs.nvf.settings.vim.languages = {
-    markdown = { 
+    markdown = {
       enable = true;
       extensions = {
         markview-nvim.enable = true;
@@ -26,7 +24,7 @@
       enable = true;
       format = {
         enable = true;
-        type   = "nixfmt";
+        type = "nixfmt";
       };
       lsp = {
         enable = true;
@@ -37,10 +35,10 @@
     css = {
       enable = true;
       format = {
-        enable  = true;
+        enable = true;
         package = pkgs.nodePackages.prettier;
       };
-      lsp.enable        = true;
+      lsp.enable = true;
       treesitter.enable = true;
     };
     clang = {
@@ -48,10 +46,10 @@
       lsp.enable = true;
       dap.enable = true;
       cHeader = true;
-      treesitter.enable = true; 
+      treesitter.enable = true;
       lsp.package = [
         "${pkgs.clang-tools}/bin/clangd"
-        "--ebable-config"
+        "--enable-config"
         "--query-driver=/nix/store/*/bin/clang,/nix/store/*/bin/clang++,/nix/store/*/bin/gcc,/nix/store/*/bin/g++"
       ];
     };
