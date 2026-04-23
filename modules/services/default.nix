@@ -1,3 +1,5 @@
 {moduleLib, ...}: {
-  imports = moduleLib.importNixModules ./.;
+  imports =
+    moduleLib.importNixModules ./.
+    ++ [./borg];
 }
