@@ -1,5 +1,8 @@
-{pkgs, ... }:{
-  
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    freetype
+    pkg-config
+  ];
   fonts.packages = with pkgs; [
     dejavu_fonts
     dina-font
