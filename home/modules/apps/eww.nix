@@ -12,6 +12,9 @@
     mpdris2
     kdePackages.kdeconnect-kde
     kdePackages.krfb
+    ddcutil
+    pipewire
+    dbus
   ];
   services.mpd = {
     enable = true;
