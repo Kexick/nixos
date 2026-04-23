@@ -3,7 +3,9 @@
   pkgs,
   ...
 }: {
-  home.packages = [
-    inputs.mcp-hub.packages."${pkgs.system}".default
+  home.packages = with pkgs; [
+    inputs.mcp-hub.packages."${pkgs.stdenv.hostPlatform.system}".default
+    uv
+    nodejs
   ];
 }
