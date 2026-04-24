@@ -22,6 +22,12 @@ in {
         group = "users";
         mode = "0400";
       };
+      "user/password_hash" = {
+        sopsFile = ../../secrets/env.yaml;
+        owner = "root";
+        group = "root";
+        mode = "0400";
+      };
     };
   };
 }
