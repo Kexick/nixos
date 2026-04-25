@@ -24,10 +24,6 @@ in {
     };
   };
 
-  # Install the upstream nvidia system-sleep hook.
-  # This hook handles the suspend→hibernate transition inside
-  # systemd-suspend-then-hibernate.service by reacting to $SYSTEMD_SLEEP_ACTION.
-  # Without it, VRAM is not preserved when transitioning from suspend to hibernate.
   environment.etc."systemd/system-sleep/nvidia" = {
     source = pkgs.writeShellScript "nvidia-system-sleep" ''
       export PATH="${lib.makeBinPath [pkgs.coreutils pkgs.kbd]}:$PATH"
@@ -36,9 +32,6 @@ in {
   };
 
   systemd.services = {
-    # suspend-then-hibernate: only nvidia-suspend runs before the initial suspend.
-    # The hibernate transition is handled by the system-sleep hook above,
-    # NOT by nvidia-hibernate.service.
     nvidia-suspend = {
       before = ["systemd-suspend-then-hibernate.service"];
       wantedBy = ["systemd-suspend-then-hibernate.service"];

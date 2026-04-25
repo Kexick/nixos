@@ -5,7 +5,7 @@
     http-connections = 50;
     max-substitution-jobs = 20;
 
-    trusted-users = ["root" "kexick"];
+    trusted-users = ["root"];
 
     experimental-features = [
       "nix-command"
