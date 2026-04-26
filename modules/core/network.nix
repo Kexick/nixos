@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = [pkgs.proxychains-ng];
   networking = {
-    hostName = "nixos"; # Define your hostname.
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    hostName = "nixos";
+    networkmanager.enable = true;
     nameservers = ["1.1.1.1" "8.8.8.8"];
     nftables.enable = true;
 
