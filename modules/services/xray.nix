@@ -1,9 +1,25 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   s = config.sops.placeholder;
 in {
   services.xray = {
     enable = true;
     settingsFile = config.sops.templates."config.json".path;
+  };
+
+  systemd.services.xray.environment = let
+    assets = pkgs.symlinkJoin {
+      name = "xray-assets";
+      paths = [
+        pkgs.v2ray-geoip
+        pkgs.v2ray-domain-list-community
+      ];
+    };
+  in {
+    XRAY_LOCATION_ASSET = "${assets}/share/v2ray";
   };
 
   sops.templates."config.json" = {
@@ -118,10 +134,30 @@ in {
             "statsOutboundUplink": true
           }
         },
-        "remarks": "Финка Reallity",
+        "remarks": "Reallity",
         "routing": {
           "domainStrategy": "AsIs",
           "rules": [
+            {
+              "type": "field",
+              "outboundTag": "block",
+              "domain": ["geosite:category-ads-all"]
+            },
+            {
+              "type": "field",
+              "outboundTag": "direct",
+              "ip": ["geoip:private"]
+            },
+            {
+              "type": "field",
+              "outboundTag": "direct",
+              "ip": ["geoip:ru"]
+            },
+            {
+              "type": "field",
+              "outboundTag": "direct",
+              "domain": ["geosite:category-ru"]
+            },
             {
               "network": "tcp,udp",
               "outboundTag": "proxy",
