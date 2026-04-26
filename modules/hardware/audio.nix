@@ -8,12 +8,6 @@
       jack.enable = true;
       wireplumber.enable = true;
       wireplumber.extraConfig = {
-        disableRestore = {
-          "wireplumber.settings" = {
-            "device.restore" = "false";
-            "stream.restore" = "false";
-          };
-        };
       };
       configPackages = [
         (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/override.conf" ''
