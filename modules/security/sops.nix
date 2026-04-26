@@ -24,9 +24,7 @@ in {
       };
       "user/password_hash" = {
         sopsFile = ../../secrets/env.yaml;
-        owner = "root";
-        group = "root";
-        mode = "0400";
+        neededForUsers = true;
       };
     };
   };
