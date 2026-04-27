@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     p7zip
+    calc
     gnumake
     fzf
     fd

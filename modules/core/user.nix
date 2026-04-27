@@ -14,7 +14,7 @@
         extraGroups = ["wheel" "input" "render" "video" "i2c"];
         shell = pkgs.zsh;
         linger = true;
-        hashedPasswordFile = config.cops.secrets."user/password_hash".path;
+        hashedPasswordFile = config.sops.secrets."user/password_hash".path;
       };
     };
   };

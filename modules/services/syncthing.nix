@@ -45,6 +45,11 @@
           path = "~/music";
           devices = ["phone"];
         };
+        Sync = {
+          id = "sync-dir";
+          path = "~/Sync";
+          devices = ["phone"];
+        };
       };
     };
   };
