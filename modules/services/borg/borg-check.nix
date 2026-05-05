@@ -15,7 +15,12 @@
         if [ -S "$BUS" ]; then
           export XDG_RUNTIME_DIR="/run/user/$(id -u)"
           export DBUS_SESSION_BUS_ADDRESS="unix:path=$BUS"
-          ${pkgs.libnotify}/bin/notify-send -a "Borg-check" "$1" "$2" || true
+          ${pkgs.libnotify}/bin/notify-send \
+          -a "Borg-check" \
+          -u "$1" \
+          -t "$2" \
+          "$3" \
+          "$4" || true
         fi
       }
 
@@ -40,10 +45,10 @@
     + ''
 
       if [ $FAILED -gt 0 ]; then
-        notify_safe "Borg-check" "$FAILED с ошибками"
+        notify_safe  "critical" "0" "Ошибка проверки резервных копий" "$FAILED с ошибками"
         exit 1
       else
-        notify_safe "Borg-check" "Состояние репозиториев ОК"
+        notify_safe  "normal" "5000" "Проверка завершена" "Состояние репозиториев ОК"
       fi
     '';
 in {

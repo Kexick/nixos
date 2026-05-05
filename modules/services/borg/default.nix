@@ -5,5 +5,6 @@
     ./borg-minecraft-main-instance.nix
     ./borg-secrets-remote.nix
     ./borg-check.nix
+    ./borg-reminders.nix
   ];
 }
