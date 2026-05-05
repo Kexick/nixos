@@ -1,96 +1,96 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  mainUser = let
+    users = lib.filterAttrs (_: v: v ? uid && v.uid == 1000) config.users.users;
+    names = builtins.attrNames users;
+  in
+    if names == []
+    then "kexick"
+    else builtins.head names;
 
-let
-  mainUser =
-    let
-      users = lib.filterAttrs (_: v: v ? uid && v.uid == 1000) config.users.users;
-      names = builtins.attrNames users;
-    in if names == [] then "kexick" else builtins.head names;
+  mkBorgJob = {
+    name,
+    repo,
+    schedule ? config.borgJobs.defaultSchedule,
+    prune ? config.borgJobs.defaultPrune,
+    compression ? config.borgJobs.defaultCompression,
+    notify ? config.borgJobs.defaultNotify,
+    calcSize ? config.borgJobs.defaultCalcSize,
+    delay ? config.borgJobs.defaultDelay,
+    encryption ? config.borgJobs.defaultEncryption,
+    localRepo ? true,
+    patterns ? [
+      "${config.borgJobs.configBase}/default.txt"
+      "${config.borgJobs.configBase}/${name}.txt"
+    ],
+  }: let
+    patternsArgs = builtins.concatLists (map (p: ["--patterns-from" p]) patterns);
 
-  mkBorgJob =
-    {
-      name,
-      repo,
-      schedule ? config.borgJobs.defaultSchedule,
-      pruneWeekly ? config.borgJobs.defaultPruneWeekly,
-      pruneMonthly ? config.borgJobs.defaultPruneMonthly,
-      compression ? config.borgJobs.defaultCompression,
-      notify ? config.borgJobs.defaultNotify,
-      calcSize ? config.borgJobs.defaultCalcSize,
-      delay ? config.borgJobs.defaultDelay,
+    # lib.concatStringsSep "\n" (map (p: "--patterns-from ${p}") patterns);
 
-      patterns ? [
-        "${config.borgJobs.configBase}/default.txt"
-        "${config.borgJobs.configBase}/${name}.txt"
-      ]
-    }:
+    postHookScript =
+      if notify
+      then ''
+        BUS="/run/user/$(id -u)/bus"
 
-    let
-      patternsArgs = builtins.concatLists (map (p: [ "--patterns-from" p ]) patterns);
+        notify_safe() {
+          if [ -S "$BUS" ]; then
+            export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+            export DBUS_SESSION_BUS_ADDRESS="unix:path=$BUS"
+            ${pkgs.libnotify}/bin/notify-send -a "$1" "$1" "$2" || true
+          fi
+        }
 
-        # lib.concatStringsSep "\n" (map (p: "--patterns-from ${p}") patterns);
+        if [ "$exitStatus" -ne 0 ]; then
+          notify_safe "Borg (${name})" "Ошибка (код $exitStatus)"
+        else
+          ${lib.optionalString calcSize ''
+          LATEST=$(${pkgs.borgbackup}/bin/borg list ${repo} --last 1 --format "{archive}{NL}")
+          SIZE_BYTES=$(${pkgs.borgbackup}/bin/borg info ${repo}::$LATEST --json | ${pkgs.jq}/bin/jq -r '.archives[0].stats.compressed_size')
 
-postHookScript =
-  if notify then ''
-    BUS="/run/user/$(id -u)/bus"
+          SIZE_HUMAN=$(${pkgs.gawk}/bin/awk -v s="$SIZE_BYTES" 'BEGIN {
+            if (s >= 1024*1024*1024)      printf "%.2f GiB", s/1024/1024/1024;
+            else if (s >= 1024*1024)     printf "%.2f MiB", s/1024/1024;
+            else                         printf "%d B", s;
+          }')
 
-    notify_safe() {
-      if [ -n "${DISPLAY:-}" ] && [ -S "$BUS" ]; then
-        export XDG_RUNTIME_DIR="/run/user/$(id -u)"
-        export DBUS_SESSION_BUS_ADDRESS="unix:path=$BUS"
-        ${pkgs.libnotify}/bin/notify-send "$1" "$2" || true
-      fi
-    }
+          notify_safe "Borg (${name})" "Готово. Размер: $SIZE_HUMAN"
+        ''}
+        fi
+      ''
+      else "";
+  in {
+    paths = [];
+    extraCreateArgs = patternsArgs;
 
-    if [ "$exitStatus" -ne 0 ]; then
-      notify_safe "Borg (${name})" "Ошибка (код $exitStatus)"
-    else
-      ${lib.optionalString calcSize ''
-        LATEST=$(${pkgs.borgbackup}/bin/borg list ${repo} --last 1 --format "{archive}{NL}")
-        SIZE_BYTES=$(${pkgs.borgbackup}/bin/borg info ${repo}::$LATEST --json | ${pkgs.jq}/bin/jq -r '.archives[0].stats.compressed_size')
+    repo = repo;
+    encryption = encryption;
+    compression = compression;
 
-        SIZE_HUMAN=$(${pkgs.gawk}/bin/awk -v s="$SIZE_BYTES" 'BEGIN {
-          if (s >= 1024*1024*1024)      printf "%.2f GiB", s/1024/1024/1024;
-          else if (s >= 1024*1024)     printf "%.2f MiB", s/1024/1024;
-          else                         printf "%d B", s;
-        }')
+    prune.keep = prune;
 
-        notify_safe "Borg (${name})" "Готово. Размер: $SIZE_HUMAN"
-      ''}
-    fi
-  '' else "";
-    in
-    {
-      paths = [ ];
-      extraCreateArgs = patternsArgs;
+    startAt = schedule;
 
-      repo = repo;
-      encryption.mode = "none";
-      compression = compression;
-
-      prune.keep = {
-        weekly = pruneWeekly;
-        monthly = pruneMonthly;
-      };
-
-      startAt = schedule;
-
-      preHook = ''
+    preHook = ''
+      ${lib.optionalString localRepo ''
         if [ ! -d "${repo}" ]; then
           mkdir -p "${repo}"
           chown ${config.borgJobs.userName}:${config.borgJobs.userGroup} "${repo}"
         fi
-        sleep ${delay}
-      '';
+      ''}
+      sleep ${delay}
+    '';
 
-      postHook = postHookScript;
+    postHook = postHookScript;
 
-      user = config.borgJobs.userName;
-      group = config.borgJobs.userGroup;
-    };
-
-in
-{
+    user = config.borgJobs.userName;
+    group = config.borgJobs.userGroup;
+  };
+in {
   options.borgJobs = {
     userName = lib.mkOption {
       type = lib.types.str;
@@ -107,39 +107,42 @@ in
       default = "/mnt/hdd0/.backups/config";
     };
 
-    defaultSchedule = lib.mkOption { 
-        type = lib.types.str;
-        default = "weekly";
+    defaultSchedule = lib.mkOption {
+      type = lib.types.str;
+      default = "weekly";
     };
 
-    defaultPruneWeekly = lib.mkOption {
-        type = lib.types.int;
-        default = 3;
-    };
-
-    defaultPruneMonthly = lib.mkOption {
-        type = lib.types.int;
-        default = 1;
+    defaultPrune = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.oneOf [lib.types.int lib.types.str]);
+      default = {
+        weekly = 3;
+        monthly = 1;
+      };
     };
 
     defaultCompression = lib.mkOption {
-        type = lib.types.str; 
-        default = "auto,zstd"; 
+      type = lib.types.str;
+      default = "auto,zstd";
     };
 
-    defaultNotify = lib.mkOption { 
-        type = lib.types.bool;
-        default = true;
+    defaultNotify = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
     };
 
     defaultCalcSize = lib.mkOption {
-        type = lib.types.bool; 
-        default = true;
+      type = lib.types.bool;
+      default = true;
     };
 
-    defaultDelay = lib.mkOption { 
-        type = lib.types.str; 
-        default = "30";
+    defaultDelay = lib.mkOption {
+      type = lib.types.str;
+      default = "30";
+    };
+
+    defaultEncryption = lib.mkOption {
+      type = lib.types.attrs;
+      default = {mode = "none";};
     };
 
     mkJob = lib.mkOption {
