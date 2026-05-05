@@ -1,4 +1,4 @@
-{...}: let
+{pkgs, ...}: let
   xray-common = {
     sopsFile = ../../secrets/xray.yaml;
     owner = "root";
@@ -26,6 +26,13 @@ in {
         sopsFile = ../../secrets/env.yaml;
         neededForUsers = true;
       };
+      "borg/passphrase" = {
+        sopsFile = ../../secrets/env.yaml;
+        owner = "kexick";
+        group = "users";
+        mode = "0400";
+      };
     };
   };
+  environment.systemPackages = [pkgs.sops];
 }
