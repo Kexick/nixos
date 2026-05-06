@@ -1,12 +1,19 @@
 {...}: {
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {
+        addKeysToAgent = "yes";
+      };
       "github.com" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
+      };
+      "*.repo.borgbase.com" = {
+        identityFile = "~/.ssh/id_ed25519_borgbase";
         identitiesOnly = true;
       };
     };
