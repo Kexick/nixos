@@ -1,0 +1,3 @@
+{moduleLib, ...}: {
+  imports = moduleLib.importNixModules ./.;
+}

@@ -10,16 +10,22 @@ in {
     settingsFile = config.sops.templates."config.json".path;
   };
 
-  systemd.services.xray.environment = let
-    assets = pkgs.symlinkJoin {
-      name = "xray-assets";
-      paths = [
-        pkgs.v2ray-geoip
-        pkgs.v2ray-domain-list-community
-      ];
+  systemd.services.xray = {
+    serviceConfig = {
+      AmbientCapabilities = ["CAP_NET_ADMIN"];
+      CapabilityBoundingSet = ["CAP_NET_ADMIN"];
     };
-  in {
-    XRAY_LOCATION_ASSET = "${assets}/share/v2ray";
+    environment = let
+      assets = pkgs.symlinkJoin {
+        name = "xray-assets";
+        paths = [
+          pkgs.v2ray-geoip
+          pkgs.v2ray-domain-list-community
+        ];
+      };
+    in {
+      XRAY_LOCATION_ASSET = "${assets}/share/v2ray";
+    };
   };
 
   sops.templates."config.json" = {
@@ -92,7 +98,8 @@ in {
                 "header": {
                 "type": "none"
                 }
-              }
+              },
+            "sockopt": { "mark": 255 }
             },
             "settings": {
               "address": "${s."xray/address"}",
@@ -108,7 +115,10 @@ in {
               "noises": [],
               "redirect": ""
             },
-          "tag": "direct"
+          "tag": "direct",
+          "streamSettings": {
+            "sockopt": { "mark": 255 }
+            }
           },
           {
           "protocol": "blackhole",
