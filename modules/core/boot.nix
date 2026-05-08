@@ -12,7 +12,7 @@
     grub = {
       enable = true;
       device = "nodev";
-      gfxmodeEfi = "2560x1440";
+      gfxmodeEfi = "auto";
       efiSupport = true;
       useOSProber = true;
       minegrub-world-sel = {
