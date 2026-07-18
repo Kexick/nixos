@@ -55,12 +55,12 @@
       device = "/dev/disk/by-uuid/f3bc4a81-97e1-4615-90a5-441ca5b15bba";
       fsType = "btrfs";
       options = ["subvol=@swap" "noatime" "compress=no"];
+      neededForBoot = true;
     };
   };
   swapDevices = [
     {
-      device = "/swap/swapfile";
-      size = 32768;
+      device = "/dev/disk/by-label/swap";
     }
   ];
 

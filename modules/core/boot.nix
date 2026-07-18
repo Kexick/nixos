@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }: {
   boot.loader = {
@@ -37,30 +38,32 @@
 
   boot = {
     kernelParams = [
-      "quiet"
-      "splash"
+      # "quiet"
+      # "splash"
       "udev.log_priority=3"
       "boot.shell_on_fail"
       "rd.systemd.show_status=auto"
-      "resume_offset=86076043"
     ];
+    resumeDevice = "/dev/disk/by-uuid/daf789e9-bb49-4205-8c50-0c124637c8c6";
 
-    resumeDevice = config.fileSystems."/swap".device;
-
-    initrd.kernelModules = [
-      "tun"
-      "xhci_pci"
-      "ehci_pci"
-      "uhci_hcd"
-      "usb_storage"
-    ];
+    initrd = {
+      supportedFilesystems = ["btrfs"];
+      systemd.enable = true;
+      kernelModules = [
+        "tun"
+        "xhci_pci"
+        "ehci_pci"
+        "uhci_hcd"
+        "usb_storage"
+      ];
+    };
 
     tmp = {
       useTmpfs = true;
     };
 
     plymouth = {
-      enable = true;
+      enable = false;
       theme = "nixos-bgrt";
       themePackages = with pkgs; [nixos-bgrt-plymouth];
     };

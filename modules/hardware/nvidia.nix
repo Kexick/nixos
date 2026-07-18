@@ -7,7 +7,7 @@
   nvidia_x11 = config.hardware.nvidia.package;
 in {
   boot.extraModprobeConfig = ''
-    options nvidia NVreg_EnableGpuFirmware=0
+    options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
   '';
   boot.kernelParams = ["pcie_port_pm=off"];
   hardware = {

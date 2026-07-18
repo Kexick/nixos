@@ -91,7 +91,6 @@
     wget
     xdg-utils
     xray
-    inputs.zen.packages.${pkgs.stdenv.hostPlatform.system}.default
     zsh-powerlevel10k
   ];
 }

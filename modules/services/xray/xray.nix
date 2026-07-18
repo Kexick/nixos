@@ -6,7 +6,7 @@
   s = config.sops.placeholder;
 in {
   services.xray = {
-    enable = true;
+    enable = false;
     settingsFile = config.sops.templates."config.json".path;
   };
 

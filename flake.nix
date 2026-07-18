@@ -13,22 +13,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     minegrub-world-sel-theme = {
       url = "github:Lxtharia/minegrub-world-sel-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland.url = "github:hyprwm/Hyprland/v0.54.0";
-
-    mcp-hub = {
-      url = "github:ravitemer/mcp-hub";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -42,7 +32,6 @@
     nvf,
     hyprland,
     sops-nix,
-    zen,
     ...
   }: let
     system = "x86_64-linux";

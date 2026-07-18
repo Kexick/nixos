@@ -1,5 +1,8 @@
 {moduleLib, ...}: {
   imports =
     moduleLib.importNixModules ./.
-    ++ [./borg ./xray];
+    ++ [
+      ./borg
+      # ./xray
+    ];
 }
