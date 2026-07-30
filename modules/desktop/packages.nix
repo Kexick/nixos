@@ -19,7 +19,8 @@
     vesktop
     sshfs
     yt-dlp
-    xorg.xcursorgen
+    elephant
+    xcursorgen
     xcur2png
     imagemagick
     win2xcur

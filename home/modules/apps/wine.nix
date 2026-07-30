@@ -5,13 +5,13 @@
 }: {
   home.packages = with pkgs; [
     winetricks
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     bottles
   ];
   home.sessionVariables = {
     WINEPREFIX = "${config.home.homeDirectory}/.wine";
     WINEDEBUG = "-all";
-    WINE = "${pkgs.wineWowPackages.waylandFull}/bin/wine";
-    WINESERVER = "${pkgs.wineWowPackages.waylandFull}/bin/wineserver";
+    WINE = "${pkgs.wineWow64Packages.waylandFull}/bin/wine";
+    WINESERVER = "${pkgs.wineWow64Packages.waylandFull}/bin/wineserver";
   };
 }

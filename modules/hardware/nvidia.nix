@@ -21,6 +21,7 @@ in {
       videoAcceleration = true;
       modesetting.enable = true;
       powerManagement.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     };
   };
 

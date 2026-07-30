@@ -15,7 +15,7 @@
       '';
     };
   };
-  services.resolved = {
+  services.resolved.settings.Resolve = {
     enable = true;
     llmnr = "false";
   };

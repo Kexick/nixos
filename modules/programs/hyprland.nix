@@ -17,7 +17,7 @@
     hyprpaper
     hyprshot
     mpvpaper
-    swww
+    awww
     grim
     slurp
     satty

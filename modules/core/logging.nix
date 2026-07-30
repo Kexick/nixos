@@ -4,10 +4,10 @@
     SystemFileSize=50M
     MaxRetentionSec=1week
   '';
-  systemd.coredump.extraConfig = ''
-    Storage=external
-    ProcessSizeMax=500M
-  '';
+  systemd.coredump.settings.Coredump = {
+    Storage = "external";
+    ProcessSizeMax = "500M";
+  };
   security.pam.loginLimits = [
     {
       domain = "*";
