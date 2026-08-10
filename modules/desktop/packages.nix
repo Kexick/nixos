@@ -21,7 +21,15 @@
     yt-dlp
     elephant
     xcursorgen
+    stylua
     xcur2png
+    lua
+    gdk-pixbuf
+    ffmpegthumbnailer
+    ffmpeg
+    libheif.bin
+    libheif.out
+    webp-pixbuf-loader
     imagemagick
     win2xcur
     btrfs-progs
