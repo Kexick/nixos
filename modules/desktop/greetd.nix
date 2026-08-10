@@ -7,14 +7,14 @@
   startHyprland = pkgs.writeShellScriptBin "start-hyprland" ''
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=Hyprland
-    exec ${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/Hyprland
+    exec ${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/start-hyprland
   '';
 in {
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/Hyprland --config /etc/greetd/hyprland-greeter-config.conf";
+        command = "${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/hyprland --config /etc/greetd/hyprland-greeter-config.lua";
         user = "greeter";
       };
     };
@@ -47,8 +47,11 @@ in {
       hl.env("GTK_USE_PORTAL", "0")
       hl.env("GDK_DEBUG", "no-portals")
       hl.config({
+      debug = {
+        enable_stdout_logs = false
+      },
       animations = {
-          enabled = true
+          enabled = false
       },
       decoration = {
           rounding = 10,
@@ -72,9 +75,10 @@ in {
           repeat_delay = 400,
           repeat_rate = 40
       }
-
       })
-      hl.exec_cmd("regreet; hyprctl dispatch exit")
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("regreet")
+      end)
     '';
 
     "greetd/etc".text = ''
