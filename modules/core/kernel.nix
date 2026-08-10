@@ -5,7 +5,7 @@
 }: {
   powerManagement.cpuFreqGovernor = "schedutil";
   boot = {
-    blacklistedKernelModules = ["k10temp"];
+    blacklistedKernelModules = ["k10temp"]; # disable because conflicts with zenpower
     extraModulePackages = with config.boot.kernelPackages; [zenpower];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["zenpower"];
