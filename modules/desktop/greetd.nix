@@ -77,7 +77,7 @@ in {
       }
       })
       hl.on("hyprland.start", function()
-        hl.exec_cmd("regreet")
+        hl.exec_cmd("regreet; hyprshutdown")
       end)
     '';
 
@@ -86,6 +86,6 @@ in {
       XDG_CURRENT_DESKTOP=wayland
     '';
 
-    "greetd/wall.png".source = ./assets/wallpapers/bliss.jpg;
+    "greetd/wall.png".source = ./assets/wallpapers/frutiger_eco.jpg;
   };
 }
