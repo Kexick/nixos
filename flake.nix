@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.54.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.56.1";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
