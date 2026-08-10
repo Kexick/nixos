@@ -43,49 +43,38 @@ in {
       path = "/etc/greetd/wall.png"
     '';
 
-    "greetd/hyprland-greeter-config.conf".text = ''
-       env = GTK_USE_PORTAL,0
-       env = GDK_DEBUG,no-portals
-
-      animations {
-          enabled = false
-      }
-
-      decoration {
-          rounding = 10
-          blur {
+    "greetd/hyprland-greeter-config.lua".text = ''
+      hl.env("GTK_USE_PORTAL", "0")
+      hl.env("GDK_DEBUG", "no-portals")
+      hl.config({
+      animations = {
+          enabled = true
+      },
+      decoration = {
+          rounding = 10,
+          blur = {
               enabled = true
           }
-      }
-
-      general {
-          gaps_in = 0
-          gaps_out = 0
+      },
+      general = {
+          gaps_in = 0,
+          gaps_out = 0,
           border_size = 0
-      }
-
-      misc {
-          disable_hyprland_logo = true
-          disable_splash_rendering = true
-          background_color = rgb(000000)
-          # Suppress watchdog warning - greetd doesn't pass fd properly to start-hyprland
+      },
+      misc = {
+          disable_hyprland_logo = true,
+          disable_splash_rendering = true,
+          -- Suppress watchdog warning - greetd doesn't pass fd properly to start-hyprland
           disable_watchdog_warning = true
-      }
-
-      # Input configuration
-      input {
-          kb_layout = us
-          repeat_delay = 400
+      },
+      input = {
+          kb_layout = "us",
+          repeat_delay = 400,
           repeat_rate = 40
-
-          touchpad {
-              tap-to-click = true
-          }
       }
 
-      # Layer rules for wallpaper daemon
-
-      exec-once = regreet; hyprctl dispatch exit
+      })
+      hl.exec_cmd("regreet; hyprctl dispatch exit")
     '';
 
     "greetd/etc".text = ''
@@ -93,6 +82,6 @@ in {
       XDG_CURRENT_DESKTOP=wayland
     '';
 
-    "greetd/wall.png".source = "/home/kexick/wallpapers/bliss.jpg";
+    "greetd/wall.png".source = ./assets/wallpapers/bliss.jpg;
   };
 }
