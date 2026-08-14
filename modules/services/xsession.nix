@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  # services.xserver.deviceSection = ''
-  #   Option "Coolbits" "28"
-  # '';
   services.xserver.displayManager.session = [
     {
       manage = "window";
