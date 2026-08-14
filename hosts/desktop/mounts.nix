@@ -69,4 +69,8 @@
   # 	fsType = "ntfs3";
   # 	options = [ "uid=1000" "gid=100" "umask=022" "noatime" ];
   # 	};
+  boot = {
+    resumeDevice = "/dev/disk/by-uuid/daf789e9-bb49-4205-8c50-0c124637c8c6";
+  };
 }
+

@@ -44,7 +44,6 @@
       "boot.shell_on_fail"
       "rd.systemd.show_status=auto"
     ];
-    resumeDevice = "/dev/disk/by-uuid/daf789e9-bb49-4205-8c50-0c124637c8c6";
 
     initrd = {
       supportedFilesystems = ["btrfs"];
