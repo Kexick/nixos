@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     hyprlandPlugins.hyprspace
     hyprcursor
+    hyprpicker
     hyprshutdown
     hyprls
     hyprlock

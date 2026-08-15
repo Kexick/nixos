@@ -5,16 +5,13 @@
       fsType = "ext4";
       options = ["noatime" "nofail" "noauto" "x-systemd.automount" "x-systemd.device-timeout=1s"];
     };
+
     "/mnt/ssd0" = {
       device = "/dev/disk/by-uuid/fd0de497-1744-4724-8e6e-a7ee7fe63320";
       fsType = "ext4";
       options = ["commit=60" "noatime" "nofail" "noauto" "x-systemd.automount" "x-systemd.device-timeout=1s"];
     };
-    # "/boot" = {
-    # device = "/dev/disk/by-uuid/A8BD-3FF6";
-    # fsType = "vfat";
-    # options = [ "defaults" ];
-    # };
+
     "/" = {
       device = "/dev/disk/by-uuid/f3bc4a81-97e1-4615-90a5-441ca5b15bba";
       fsType = "btrfs";
@@ -58,6 +55,7 @@
       neededForBoot = true;
     };
   };
+
   swapDevices = [
     {
       device = "/dev/disk/by-label/swap";
@@ -69,6 +67,7 @@
   # 	fsType = "ntfs3";
   # 	options = [ "uid=1000" "gid=100" "umask=022" "noatime" ];
   # 	};
+
   boot = {
     resumeDevice = "/dev/disk/by-uuid/daf789e9-bb49-4205-8c50-0c124637c8c6";
   };
