@@ -16,13 +16,11 @@
     ripgrep
     bash-language-server
     lua-language-server
+    stylua
     vesktop
     sshfs
     yt-dlp
-    elephant
-    xcursorgen
-    stylua
-    xcur2png
+    elephant # for walker
     lua
     gdk-pixbuf
     ffmpegthumbnailer
@@ -34,7 +32,6 @@
     win2xcur
     btrfs-progs
     kdiskmark
-    ironbar
     wlroots
     syncthing
     topiary
@@ -42,9 +39,7 @@
     gamemode
     evemu
     ydotool
-    piper-tts
-    whisper-cpp
-    avfs
+    avfs # i have no idea what it is 
     javaPackages.compiler.openjdk25
     atool
     qtemu
@@ -55,7 +50,6 @@
     cava
     chafa
     chromium
-    clock-rs
     curl
     fastfetch
     foot
@@ -66,6 +60,7 @@
     ipset
     iptables
     libnotify
+    nftables
     lutris
     mangohud
     luarocks
@@ -74,7 +69,6 @@
     nixd
     nixpkgs-fmt
     alejandra
-    nftables
     obsidian
     osu-lazer-bin
     papirus-icon-theme
@@ -86,10 +80,7 @@
     qt5.qtgraphicaleffects
     libsForQt5.qt5.qtgraphicaleffects
     jq
-    ranger
     telegram-desktop
-    testdisk
-    ueberzugpp
     unzip
     vscode-langservers-extracted
     vulkan-extension-layer
