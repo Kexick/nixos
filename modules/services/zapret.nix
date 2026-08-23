@@ -9,11 +9,6 @@
   services.zapret = {
     enable = false;
     params = [
-      # "--dpi-desync=fake,fakedsplit"
-      # "--dpi-desync-autottl=2"
-      # "--dpi-desync-fooling=md5sig"
-      # "--new"
-      # "--dpi-desync-fooling=badseq"
       "--dpi-desync=fake,multidisorder"
       "--dpi-desync-split-pos=midsld"
       "--dpi-desync-fake-tls=0x00000000"
@@ -21,7 +16,6 @@
       "--filter-udp=443"
       "--dpi-desync=fake,disorder2"
       "--dpi-desync-autottl=2"
-      # "--dpi-desync-ttl=1"
     ];
     whitelist = [
       "7tv.app"
