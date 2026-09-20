@@ -8,7 +8,13 @@
         pad = "20x20";
       };
 
-      colors = {
+      colors-dark = {
+        alpha = 0.46;
+        background = "000000";
+        foreground = "ffffff";
+      };
+
+      colors-light = {
         alpha = 0.46;
         background = "000000";
         foreground = "ffffff";
