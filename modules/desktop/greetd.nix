@@ -7,20 +7,22 @@
   startHyprland = pkgs.writeShellScriptBin "start-hyprland" ''
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=Hyprland
-    exec ${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/start-hyprland
+    exec start-hyprland
   '';
+
+    # exec ${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/start-hyprland
 in {
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/hyprland --config /etc/greetd/hyprland-greeter-config.lua";
+        command = "hyprland --config /etc/greetd/hyprland-greeter-config.lua";
         user = "greeter";
       };
     };
   };
 
-  programs.regreet = {
+  services.displayManager.regreet = {
     enable = true;
 
     font = {
