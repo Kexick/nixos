@@ -77,7 +77,6 @@
     prismlauncher
     python313Packages.nvidia-ml-py
     qt5.qtgraphicaleffects
-    libsForQt5.qt5.qtgraphicaleffects
     jq
     telegram-desktop
     unzip

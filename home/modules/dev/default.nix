@@ -5,6 +5,6 @@
     ./rust.nix
     # ./mcphub.nix
     ./python.nix
-    ./claude.nix
+    # ./claude.nix
   ];
 }
