@@ -2,19 +2,26 @@
   inputs,
   pkgs,
   ...
-}: {
+}:let
+  # hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  # portal = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+in {
+
   programs.hyprland = {
     enable = true;
+    # package = pkgs.hyprland;
+    # portalPackage = pkgs.xdg-desktop-portal-hyprland;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+
   environment.systemPackages = with pkgs; [
-    hyprlandPlugins.hyprspace
+    # hyprlandPlugins.hyprspace
     hyprcursor
     hyprpicker
     hyprshutdown
-    hyprls
+    # hyprls
     hyprlock
     hyprpaper
     hyprshot
@@ -29,7 +36,8 @@
   xdg.portal = {
     enable = true;
     extraPortals = [
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
+      # portal
+      pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
 

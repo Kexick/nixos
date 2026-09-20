@@ -2,9 +2,10 @@
   description = "Main flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
+    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,7 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.56.1";
+   hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland/tags/v0.56.2";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -44,7 +53,7 @@
       modules = [
         ./hosts/desktop
         inputs.minegrub-world-sel-theme.nixosModules.default
-        hyprland.nixosModules.default
+        # hyprland.nixosModules.default
         sops-nix.nixosModules.sops
       ];
       specialArgs = {
