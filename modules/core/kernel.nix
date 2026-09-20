@@ -2,7 +2,7 @@
   pkgs,
   config,
   ...
-}: {
+}:  {
   powerManagement.cpuFreqGovernor = "schedutil";
   boot = {
     blacklistedKernelModules = ["k10temp"]; # disable because conflicts with zenpower

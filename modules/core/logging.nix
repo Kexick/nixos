@@ -1,9 +1,14 @@
 {...}: {
-  services.journald.extraConfig = ''
-    SystemMaxUse=500M
-    SystemFileSize=50M
-    MaxRetentionSec=1week
-  '';
+  # services.journald.extraConfig = ''
+  #   SystemMaxUse=500M
+  #   SystemFileSize=50M
+  #   MaxRetentionSec=1week
+  # '';
+  services.journald.settings.Journal = {
+    SystemMaxUse="500M";
+    SystemFileSize="50M";
+    MaxRetentionSec="1week";
+  };
   systemd.coredump.settings.Coredump = {
     Storage = "external";
     ProcessSizeMax = "500M";
