@@ -7,6 +7,11 @@
   ];
   home.packages = with pkgs; [
     tree
-    discord
+    gvfs
+    glib
+    ouch
+    trash-cli
+    lazygit
   ];
+  nixpkgs.config.allowUnfree = true;
 }
