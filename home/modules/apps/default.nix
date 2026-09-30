@@ -5,6 +5,7 @@
     ./alacritty.nix
     ./foot.nix
     ./obs-studio.nix
+    ./firefox.nix
   ];
   home.packages = with pkgs; [
     nemo
