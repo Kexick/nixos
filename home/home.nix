@@ -1,4 +1,4 @@
-{...}: {
+{ ...}: {
   home = {
     username = "kexick";
     homeDirectory = "/home/kexick";
@@ -12,4 +12,5 @@
     ./modules/dev/default.nix
     ./modules/desktop/default.nix
   ];
+  nixpkgs.config.allowUnfree = true;
 }

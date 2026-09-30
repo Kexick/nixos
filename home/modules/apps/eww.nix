@@ -13,6 +13,7 @@
     kdePackages.kdeconnect-kde
     kdePackages.krfb
     ddcutil
+    ddcutil-service
     pipewire
     dbus
   ];
