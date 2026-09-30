@@ -7,11 +7,5 @@
   ];
   home.packages = with pkgs; [
     tree
-    gvfs
-    glib
-    ouch
-    trash-cli
-    lazygit
   ];
-  nixpkgs.config.allowUnfree = true;
 }

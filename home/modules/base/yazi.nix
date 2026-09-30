@@ -1,25 +1,26 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    gvfs
+    glib
+    ouch
+    trash-cli
+    lazygit
+    mediainfo
+  ];
   programs.yazi = {
     enable = true;
     plugins = {
-      lazygit = {
-        package = pkgs.yaziPlugins.lazygit;
-      };
-      convert = {
-        package = pkgs.yaziPlugins.convert;
-      };
+      full-border.package = pkgs.yaziPlugins.full-border;
+      clip.package        = pkgs.yaziPlugins.clipboard;
+      mediainfo.package   = pkgs.yaziPlugins.mediainfo;
+      lazygit.package     = pkgs.yaziPlugins.lazygit;
+      convert.package     = pkgs.yaziPlugins.convert;
+      ouch.package        = pkgs.yaziPlugins.ouch;
+      zoom.package        = pkgs.yaziPlugins.zoom;
+      mount.package       = pkgs.yaziPlugins.mount;
       restore = {
         package = pkgs.yaziPlugins.restore;
         setup = true;
-      };
-      ouch = { 
-        package = pkgs.yaziPlugins.ouch;
-      };
-      zoom = {
-        package = pkgs.yaziPlugins.zoom;
-      };
-      mount = {
-        package = pkgs.yaziPlugins.mount;
       };
       bookmarks = {
         package = pkgs.yaziPlugins.bookmarks;
@@ -30,7 +31,7 @@
           persist = false;
           mode = "dir";
             };
-          persist = "none";
+          persist = "all";
           desc_format = "full";
           file_pick_mode = "hover";
           custom_desc_input = false;
@@ -50,6 +51,21 @@
     keymap = {
       mgr.prepend_keymap = [
         {
+          on  = "y";
+          run = [ "yank" "plugin clip -- --action=copy" ];
+          desc = "Yank selected files (copy)";
+        }
+        {
+          on  = "x";
+          run = [ "yank --cut" "plugin clip -- --action=copy" ];
+          desc = "Yank selected files (cut)";
+        }
+        {
+          on  = "<C-p>";
+          run = [ "plugin clip -- --action=paste" ];
+          desc = "Paste yanked system clip files";
+        }
+        {
           on = [ "g" "i" ];
           run = "plugin lazygit";
           desc = "run lazygit";
@@ -57,17 +73,17 @@
         {
           on = ["c" "p"];
           run = "plugin convert -- --extension='png'";
-          desc = "Convert selected files to PNG";
+          desc = "[PNG] Convert";
         }
         {
           on = ["c" "j"];
           run = "plugin convert -- --extension='jpg'";
-          desc = "Convert selected files to JPG";
+          desc = "[JPG] Convert";
         }
         {
           on = ["c" "w"];
           run = "plugin convert -- --extension='webp'";
-          desc = "Convert selected files to WebP";
+          desc = "[WEBP] Convert";
         }
         {
           on = ["u"];
@@ -95,7 +111,7 @@
           desc = "Zoom out hovered file";
         }
         {
-          on = [ "M"];
+          on = [ "M" ];
           run = "plugin mount";
           desc = "Mount device";
         }
@@ -130,6 +146,11 @@
         }
       ];
     };
+    initLua = ''
+     require("full-border"):setup {
+        type = ui.Border.ROUNDED,
+      }
+    '';
     settings = {
       log = {
         enabled = false;
@@ -142,21 +163,33 @@
         sort_reverse = true;
         scrolloff = 7;
       };
-      plugin.prepend_previewers = [
-        {
-          mime = "image/{jpeg,png,webp}";
-          run  = "zoom 5";
-        }
-        {
-          mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}";
-          run = "ouch";
-        }
+      
+      plugin = {
+        prepend_preloaders = [
+        { mime = "{audio,video,image}/*"; run = "mediainfo"; }
+        { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps}"; run = "mediainfo"; }
+        { url = "*.{ai,eps,ait}"; run = "mediainfo"; }
+        { mime = "{image}/*"; run = "mediainfo --no-metadata"; }
+        { mime = "{video}/*"; run = "mediainfo --no-preview"; }
+        ];
+        prepend_previewers = [
+        { mime = "image/{jpeg,png,webp}"; run  = "zoom 5"; }
+        { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"; run = "ouch"; }
+        { url = "*.{ai,eps,ait}"; run = "mediainfo"; }
+        { mime = "{audio,video,image}/*"; run = "mediainfo"; }
+        { mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps}"; run = "mediainfo"; }
+        { mime = "{image}/*"; run = "mediainfo --no-metadata"; }
+        { mime = "{video}/*"; run = "mediainfo --no-preview"; }
       ];
+      };
       preview = {
         image_protocol = "kitty";
         image_filter = "nearest";
-        max_width = 10000;
+        max_width  = 10000;
         max_height = 10000;
+      };
+      tasks = {
+       image_alloc = 1073741824;
       };
     };
   };
