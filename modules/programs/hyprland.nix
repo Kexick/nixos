@@ -3,20 +3,21 @@
   pkgs,
   ...
 }:let
-  # hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  # portal = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  gloview = inputs.gloview.packages.${pkgs.stdenv.hostPlatform.system}.gloview;
+  noshare-cover = inputs.noshare-cover.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
-
   programs.hyprland = {
     enable = true;
-    # package = pkgs.hyprland;
-    # portalPackage = pkgs.xdg-desktop-portal-hyprland;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-
-  environment.systemPackages = with pkgs; [
+  environment = {
+  sessionVariables = {
+    NOSHARE_COVER = "${noshare-cover}/lib/libnoshare-cover.so";
+    GLOVIEW = "${gloview}/lib/libgloview.so";
+  };
+    systemPackages = with pkgs; [
     # hyprlandPlugins.hyprspace
     hyprcursor
     hyprpicker
@@ -32,7 +33,7 @@ in {
     satty
     dunst
   ];
-
+  };
   xdg.portal = {
     enable = true;
     extraPortals = [
