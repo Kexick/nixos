@@ -6,5 +6,6 @@
     # ./mcphub.nix
     ./python.nix
     # ./claude.nix
+    ./quickshel.nix
   ];
 }
