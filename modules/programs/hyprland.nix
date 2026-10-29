@@ -2,7 +2,7 @@
   inputs,
   pkgs,
   ...
-}:let
+}: let
   gloview = inputs.gloview.packages.${pkgs.stdenv.hostPlatform.system}.gloview;
   noshare-cover = inputs.noshare-cover.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
@@ -13,26 +13,26 @@ in {
   };
 
   environment = {
-  sessionVariables = {
-    NOSHARE_COVER = "${noshare-cover}/lib/libnoshare-cover.so";
-    GLOVIEW = "${gloview}/lib/libgloview.so";
-  };
+    sessionVariables = {
+      NOSHARE_COVER = "${noshare-cover}/lib/libnoshare-cover.so";
+      GLOVIEW = "${gloview}/lib/libgloview.so";
+    };
     systemPackages = with pkgs; [
-    # hyprlandPlugins.hyprspace
-    hyprcursor
-    hyprpicker
-    hyprshutdown
-    # hyprls
-    hyprlock
-    hyprpaper
-    hyprshot
-    mpvpaper
-    awww
-    grim
-    slurp
-    satty
-    dunst
-  ];
+      # hyprlandPlugins.hyprspace
+      hyprcursor
+      hyprpicker
+      hyprshutdown
+      # hyprls
+      hyprlock
+      hyprpaper
+      hyprshot
+      mpvpaper
+      awww
+      grim
+      slurp
+      satty
+      dunst
+    ];
   };
   xdg.portal = {
     enable = true;
