@@ -1,5 +1,9 @@
 {...}: {
   programs = {
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
     steam = {
       enable = true;
       gamescopeSession = {
@@ -13,17 +17,15 @@
           __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         };
         args = [
-          "-e"
           "-f"
           "--rt"
-          "-H"
-          "2560"
           "-W"
+          "2560"
+          "-H"
           "1440"
-          "--mangoapp"
+          "-e"
           "--force-composition"
-          "--backend"
-          "sdl"
+          "--mangoapp"
         ];
       };
     };
