@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -38,7 +35,6 @@
     gamemode
     evemu
     ydotool
-    avfs # i have no idea what it is 
     javaPackages.compiler.openjdk25
     atool
     qtemu

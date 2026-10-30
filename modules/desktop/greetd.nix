@@ -9,8 +9,7 @@
     export XDG_CURRENT_DESKTOP=Hyprland
     exec start-hyprland
   '';
-
-    # exec ${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/start-hyprland
+  # exec ${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/start-hyprland
 in {
   services.greetd = {
     enable = true;
@@ -88,6 +87,6 @@ in {
       XDG_CURRENT_DESKTOP=wayland
     '';
 
-    "greetd/wall.png".source = ./assets/wallpapers/frutiger_eco.jpg;
+    "greetd/wall.png".source = ../../assets/wallpapers/frutiger_eco.jpg;
   };
 }

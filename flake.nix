@@ -57,7 +57,7 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
     lib = pkgs.lib;
-    moduleLib = import ./autoimport.nix {inherit lib;};
+    moduleLib = import ./lib/autoimport.nix {inherit lib;};
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;

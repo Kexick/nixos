@@ -1,12 +1,8 @@
-{...}: {
-  imports = [
-    ./hardware.nix
-    ./mounts.nix
-    ../../modules/core
-    ../../modules/desktop
-    ../../modules/hardware
-    ../../modules/programs
-    ../../modules/services
-    ../../modules/security/sops.nix
-  ];
+{moduleLib, ...}: {
+  imports =
+    [
+      ./hardware.nix
+      ./mounts.nix
+    ]
+    ++ moduleLib.importNixModules ../../modules;
 }
