@@ -4,5 +4,4 @@
     claude-code-router
     nodejs
   ];
-  nixpkgs.config.allowUnfree = true;
 }

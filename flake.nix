@@ -55,7 +55,9 @@
     ...
   }: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {
+      inherit system;
+    };
     lib = pkgs.lib;
     moduleLib = import ./lib/autoimport.nix {inherit lib;};
   in {
@@ -76,7 +78,10 @@
     };
 
     homeConfigurations.kexick = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       extraSpecialArgs = {inherit inputs;};
       modules = [
         ./home/home.nix

@@ -15,4 +15,5 @@
       "flakes"
     ];
   };
+  nixpkgs.config.allowUnfree = true;
 }

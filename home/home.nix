@@ -13,5 +13,4 @@
     ./modules/desktop/default.nix
     ./modules/gaming/packages.nix
   ];
-  nixpkgs.config.allowUnfree = true;
 }
