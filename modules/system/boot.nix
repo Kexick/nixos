@@ -47,7 +47,6 @@
 
     initrd = {
       supportedFilesystems = ["btrfs"];
-      systemd.enable = true;
       kernelModules = [
         "tun"
         "xhci_pci"
