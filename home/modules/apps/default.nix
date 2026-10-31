@@ -6,10 +6,6 @@
     ./foot.nix
     ./obs-studio.nix
     ./firefox.nix
-  ];
-  home.packages = with pkgs; [
-    nemo
-    ayugram-desktop
-    wf-recorder
+    ./packages.nix
   ];
 }

@@ -7,5 +7,6 @@
     ./python.nix
     # ./claude.nix
     ./quickshel.nix
+    ./packages.nix
   ];
 }

@@ -1,9 +1,12 @@
 {pkgs, ...}: {
   # environment.systemPackages = pkgs.zsh-powerlevel10k;
 
-  home.sessionVariablesExtra = ''
-    export CUSTOM_API_KEY="$(cat /run/secrets/env/custom_api_key)"
-  '';
+  home = {
+    packages = with pkgs; [zsh-powerlevel10k];
+    sessionVariablesExtra = ''
+      export CUSTOM_API_KEY="$(cat /run/secrets/env/custom_api_key)"
+    '';
+  };
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -14,7 +17,8 @@
       export PATH="$HOME/.openviking/bin:$PATH"
       export PATH="$HOME/bin:$PATH"
       export OPENVIKING_CONFIG_FILE="$HOME/.openviking/ov.conf"
-      export OPENVIKING_CLI_CONFIG_FILE="$HOME/.openviking/ovcli.conf"'';
+      export OPENVIKING_CLI_CONFIG_FILE="$HOME/.openviking/ovcli.conf"
+    '';
 
     plugins = [
       {

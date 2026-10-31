@@ -63,6 +63,7 @@
 
     plymouth = {
       enable = false;
+      package = pkgs.plymouth;
       theme = "nixos-bgrt";
       themePackages = with pkgs; [nixos-bgrt-plymouth];
     };

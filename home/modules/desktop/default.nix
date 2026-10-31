@@ -4,5 +4,6 @@
     ./overlay/mangohud.nix
     ./keepassxc.nix
     ./xdg.nix
+    ./packages.nix
   ];
 }

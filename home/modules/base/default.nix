@@ -3,9 +3,7 @@
     ./shell/shell.nix
     ./shell/tmux.nix
     ./shell/ssh.nix
-    ./yazi.nix
-  ];
-  home.packages = with pkgs; [
-    tree
+    ./shell/cli/yazi.nix
+    ./shell/cli/packages.nix
   ];
 }
