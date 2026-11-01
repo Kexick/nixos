@@ -1,5 +1,3 @@
 {...}: {
-  services.ollama = {
-    enable = false;
-  };
+  services.ollama.enable = false;
 }
