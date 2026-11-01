@@ -53,4 +53,8 @@
       };
     };
   };
+  networking.firewall.extraInputRules = ''
+    iifname "enp42s0" ip saddr 192.168.0.0/24 tcp dport 22000 accept
+    iifname "enp42s0" ip saddr 192.168.0.0/24 udp dport 22000 accept
+  '';
 }
