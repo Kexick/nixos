@@ -48,12 +48,12 @@
       options = ["subvol=@games/prefix" "noatime" "autodefrag" "compress=zstd:3" "discard=async"];
     };
 
-    "/swap" = {
-      device = "/dev/disk/by-uuid/f3bc4a81-97e1-4615-90a5-441ca5b15bba";
-      fsType = "btrfs";
-      options = ["subvol=@swap" "noatime" "compress=no"];
-      neededForBoot = true;
-    };
+    # "/swap" = {
+    #   device = "/dev/disk/by-uuid/f3bc4a81-97e1-4615-90a5-441ca5b15bba";
+    #   fsType = "btrfs";
+    #   options = ["subvol=@swap" "noatime" "compress=no"];
+    #   neededForBoot = true;
+    # };
   };
 
   swapDevices = [
@@ -62,14 +62,11 @@
     }
   ];
 
+  boot.resumeDevice = "/dev/disk/by-label/swap";
+
   # "/mnt/hdd1" = {
   # 	device = "/dev/disk/by-uuid/B038304438300C3A";
   # 	fsType = "ntfs3";
   # 	options = [ "uid=1000" "gid=100" "umask=022" "noatime" ];
   # 	};
-
-  boot = {
-    resumeDevice = "/dev/disk/by-uuid/daf789e9-bb49-4205-8c50-0c124637c8c6";
-  };
 }
-
