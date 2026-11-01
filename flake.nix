@@ -20,19 +20,19 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/tags/v0.57.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     gloview = {
-      url = "github:gitscout-bot/gloview";
-      inputs.gloview.inputs.hyprland.follows = "hyprland";
-    };
-    noshare-cover = {
-      url = "github:gitscout-bot/noshare-cover";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:fedsfarm/gloview";
       inputs.hyprland.follows = "hyprland";
     };
+    # noshare-cover = {
+    #   url = "github:gitscout-bot/noshare-cover";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
