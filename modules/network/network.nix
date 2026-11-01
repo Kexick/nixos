@@ -4,6 +4,10 @@
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
+      settings.connection = {
+        "connection.llmnr" = 0;
+        "connection.mdns" = 0;
+      };
     };
     nameservers = [
       "1.1.1.1"
@@ -15,10 +19,10 @@
     ];
   };
   services.resolved = {
-    enable = true;
     settings.Resolve = {
       enable = true;
-      llmnr = "false";
+      LLMNR = "false";
+      MulticastDNS = "false";
     };
   };
 }
