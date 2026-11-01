@@ -8,7 +8,6 @@
     jq
     gnumake
     home-manager
-    nh
     btrfs-progs
     sshfs
     alsa-utils
