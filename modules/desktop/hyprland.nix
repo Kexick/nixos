@@ -4,7 +4,7 @@
   ...
 }: let
   gloview = inputs.gloview.packages.${pkgs.stdenv.hostPlatform.system}.gloview;
-  noshare-cover = inputs.noshare-cover.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  # noshare-cover = inputs.noshare-cover.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   programs.hyprland = {
     enable = true;
@@ -14,7 +14,7 @@ in {
 
   environment = {
     sessionVariables = {
-      NOSHARE_COVER = "${noshare-cover}/lib/libnoshare-cover.so";
+      # NOSHARE_COVER = "${noshare-cover}/lib/libnoshare-cover.so";
       GLOVIEW = "${gloview}/lib/libgloview.so";
     };
     systemPackages = with pkgs; [
