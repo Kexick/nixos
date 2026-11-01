@@ -55,27 +55,28 @@
     ...
   }: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-    };
-    lib = pkgs.lib;
+    lib = nixpkgs.lib;
     moduleLib = import ./lib/autoimport.nix {inherit lib;};
-  in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./hosts/desktop
-        inputs.minegrub-world-sel-theme.nixosModules.default
-        # hyprland.nixosModules.default
-        sops-nix.nixosModules.sops
-      ];
-      specialArgs = {
-        inherit
-          moduleLib
-          inputs
-          ;
+    mkHost = name:
+      lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          ./hosts/${name}
+          inputs.minegrub-world-sel-theme.nixosModules.default
+          # hyprland.nixosModules.default
+          sops-nix.nixosModules.sops
+          {networking.hostName = name;}
+        ];
+        specialArgs = {
+          inherit
+            moduleLib
+            inputs
+            ;
+        };
       };
-    };
+  in {
+    nixosConfigurations = lib.genAttrs ["desktop"] mkHost;
 
     homeConfigurations.kexick = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {

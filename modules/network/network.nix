@@ -1,12 +1,10 @@
 {pkgs, ...}: {
   environment.systemPackages = [pkgs.proxychains-ng];
   networking = {
-    hostName = "nixos";
-    networkmanager = 
-      {
-        enable = true; 
-        dns = "systemd-resolved";
-      };
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+    };
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
@@ -27,9 +25,9 @@
   };
   services.resolved = {
     enable = true;
-      settings.Resolve = {
-        enable = true;
-        llmnr = "false";
-      };
+    settings.Resolve = {
+      enable = true;
+      llmnr = "false";
+    };
   };
 }
