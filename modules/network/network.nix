@@ -19,8 +19,8 @@
     ];
   };
   services.resolved = {
+    enable = true;
     settings.Resolve = {
-      enable = true;
       LLMNR = "false";
       MulticastDNS = "false";
     };
