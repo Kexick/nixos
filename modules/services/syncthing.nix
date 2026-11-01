@@ -20,11 +20,14 @@
 
       options = {
         globalAnnounceEnabled = false;
-        localAnnounceEnabled = true;
+        localAnnounceEnabled = false;
         relaysEnabled = false;
         natEnabled = false;
         urAccepted = -1;
         startBrowser = false;
+        stunKeepaliveMinS = 0;
+        stunKeepaliveStartS = 0;
+        listenAddresses = ["tcp://0.0.0.0:22000"];
       };
 
       devices = {
