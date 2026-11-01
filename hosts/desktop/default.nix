@@ -1,6 +1,7 @@
 {moduleLib, ...}: {
   imports =
     [
+      ./env.nix
       ./hardware.nix
       ./mounts.nix
     ]
