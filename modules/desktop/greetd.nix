@@ -13,12 +13,12 @@
 in {
   services.greetd = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "hyprland --config /etc/greetd/hyprland-greeter-config.lua";
-        user = "greeter";
-      };
-    };
+    # settings = {
+    #   default_session = {
+    #     command = "hyprland --config /etc/greetd/hyprland-greeter-config.lua";
+    #     user = "greeter";
+    #   };
+    # };
   };
 
   services.displayManager.regreet = {
@@ -34,7 +34,6 @@ in {
     startHyprland
     orchis-theme
     gnome-themes-extra
-    regreet
   ];
 
   environment.etc = {
