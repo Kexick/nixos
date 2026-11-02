@@ -1,4 +1,5 @@
-{...}: {
+{lib, ...}: {
+  systemd.services.syncthing.wantedBy = lib.mkForce ["graphical.target"];
   services.syncthing = {
     enable = true;
     user = "kexick";
