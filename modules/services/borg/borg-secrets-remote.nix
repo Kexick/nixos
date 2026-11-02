@@ -1,6 +1,8 @@
-{config, ...}: {
+{config, ...}: let
+  name = "secrets-remote";
+in {
   services.borgbackup.jobs.secrets-remote = config.borgJobs.mkJob {
-    name = "secrets-remote";
+    name = "nixos-${name}";
     repo = "ssh://jdh29855@jdh29855.repo.borgbase.com/./repo";
     schedule = "daily";
     localRepo = false;
