@@ -12,5 +12,6 @@
     stylua
     luarocks
     topiary
+    zed-editor-fhs
   ];
 }
