@@ -3,13 +3,13 @@
     "/mnt/hdd0" = {
       device = "/dev/disk/by-uuid/ee10421e-66bd-44d3-852b-7d38a6a5911a";
       fsType = "ext4";
-      options = ["noatime" "nofail" "noauto" "x-systemd.automount" "x-systemd.device-timeout=1s"];
+      options = ["noatime" "nofail" "noauto" "x-systemd.automount" "x-systemd.device-timeout=1s" "systemd.idle-timeout=10min"];
     };
 
     "/mnt/ssd0" = {
       device = "/dev/disk/by-uuid/fd0de497-1744-4724-8e6e-a7ee7fe63320";
       fsType = "ext4";
-      options = ["commit=60" "noatime" "nofail" "noauto" "x-systemd.automount" "x-systemd.device-timeout=1s"];
+      options = ["commit=60" "noatime" "nofail" "noauto" "x-systemd.automount" "x-systemd.device-timeout=1s" "systemd.idle-timeout=10min"];
     };
 
     "/" = {
@@ -47,13 +47,6 @@
       fsType = "btrfs";
       options = ["subvol=@games/prefix" "noatime" "autodefrag" "compress=zstd:3" "discard=async"];
     };
-
-    # "/swap" = {
-    #   device = "/dev/disk/by-uuid/f3bc4a81-97e1-4615-90a5-441ca5b15bba";
-    #   fsType = "btrfs";
-    #   options = ["subvol=@swap" "noatime" "compress=no"];
-    #   neededForBoot = true;
-    # };
   };
 
   swapDevices = [
