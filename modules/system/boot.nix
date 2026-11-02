@@ -38,11 +38,15 @@
 
   boot = {
     kernelParams = [
-      # "quiet"
-      # "splash"
+      "quiet"
+      "splash"
       "udev.log_priority=3"
       "boot.shell_on_fail"
-      "rd.systemd.show_status=auto"
+      "rd.systemd.show_status=false"
+      "systemd.show_status=false"
+      "vt.global_cursor_default=0"
+      "nvidia_drm.modeset=1"
+      "nvidia_drm.fbdev=1"
     ];
 
     initrd = {
@@ -53,6 +57,10 @@
         "ehci_pci"
         "uhci_hcd"
         "usb_storage"
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
       ];
     };
 
@@ -61,9 +69,9 @@
     };
 
     plymouth = {
-      enable = false;
-      package = pkgs.plymouth;
-      theme = "nixos-bgrt";
+      enable = true;
+      theme = "spinner";
+      showDelay = 3;
       themePackages = with pkgs; [nixos-bgrt-plymouth];
     };
   };
