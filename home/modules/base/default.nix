@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     ./shell/shell.nix
     ./shell/tmux.nix
