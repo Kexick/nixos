@@ -39,7 +39,7 @@
     "/games" = {
       device = "/dev/disk/by-uuid/f3bc4a81-97e1-4615-90a5-441ca5b15bba";
       fsType = "btrfs";
-      options = ["subvol=@games" "noatime" "compress=no" "discard=async"];
+      options = ["subvol=@games" "noatime" "compress=zstd:6" "discard=async"];
     };
 
     "/games/prefix" = {
