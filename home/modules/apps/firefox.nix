@@ -59,7 +59,7 @@
       DisableTelemetry = true;
       DefaultDownloadDirectory = "\${home}/Downloads";
       DontCheckDefaultBrowser = true;
-      HardwareAcceleration = false;
+      HardwareAcceleration = true;
       OfferToSaveLogins = false;
       ExtensionSettings = let
         moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
