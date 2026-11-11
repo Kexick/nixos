@@ -9,7 +9,7 @@
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
     efi.efiSysMountPoint = "/boot";
-    timeout = 10;
+    timeout = 3;
     grub = {
       enable = true;
       device = "nodev";
