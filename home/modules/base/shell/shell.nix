@@ -40,8 +40,10 @@
       dot = "git --git-dir=$HOME/.dotfiles --work-tree=$HOME";
       gc = "sudo nix-collect-garbage -d";
       ff = "sh ~/.config/fastfetch/ff.sh";
-      hfr = "home-manager switch --flake /etc/nixos";
-      nfr = "nixos-rebuild switch --sudo --flake /etc/nixos";
+      # hfr = "home-manager switch --flake /etc/nixos";
+      # nfr = "nixos-rebuild switch --sudo --flake /etc/nixos";
+      hfr = "nh home switch -q";
+      nfr = "nh os switch -q";
       reboot = "pkill chromium -15; sleep 1; reboot";
       gens = "sudo nix-env --list-generations -p /nix/var/nix/profiles/system";
       code = "ccr code --model openai,gpt-5.3-codex";
