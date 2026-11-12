@@ -22,6 +22,7 @@ in {
       hyprcursor
       hyprpicker
       hyprshutdown
+      hyprpolkitagent
       # hyprls
       hyprlock
       hyprpaper
