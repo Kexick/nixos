@@ -1,6 +1,9 @@
 {...}: {
   networking = {
-    firewall.enable = true;
+    firewall = {
+      enable = true;
+      allowPing = false;
+    };
     nftables.enable = true;
   };
 }

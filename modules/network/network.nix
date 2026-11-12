@@ -9,6 +9,7 @@
         "connection.mdns" = 0;
       };
     };
+    wireless.userControlled = true;
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
@@ -25,4 +26,8 @@
       MulticastDNS = "false";
     };
   };
+  users.users.kexick.extraGroups = [
+    "networkmanager"
+    "wpa_supplicant"
+  ];
 }
