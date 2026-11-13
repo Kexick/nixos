@@ -1015,7 +1015,8 @@
         "nixpkgs": "nixpkgs_2",
         "noshare-cover": "noshare-cover",
         "nvf": "nvf",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "yazi-plugins": "yazi-plugins"
       }
     },
     "sops-nix": {
@@ -1180,6 +1181,22 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "yazi-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794542472,
+        "narHash": "sha256-AvxQQI0NEJkCmg9b8uZcHbUuKHbyYdVZSFHBM/c/h2I=",
+        "owner": "Kexick",
+        "repo": "yazi-plugins",
+        "rev": "194bb4a545df7ab0a93d95625db91d3e27778dd1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kexick",
+        "repo": "yazi-plugins",
         "type": "github"
       }
     }

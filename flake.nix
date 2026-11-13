@@ -38,6 +38,10 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+   yazi-plugins = {
+      url = "github:Kexick/yazi-plugins";
+      flake = false;
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

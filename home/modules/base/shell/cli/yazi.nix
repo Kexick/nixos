@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     gvfs
     glib
@@ -6,6 +10,8 @@
     trash-cli
     lazygit
     mediainfo
+    ffmpeg
+    imagemagick
   ];
   programs.yazi = {
     enable = true;
@@ -15,16 +21,36 @@
       clip.package = pkgs.yaziPlugins.clipboard;
       mediainfo.package = pkgs.yaziPlugins.mediainfo;
       lazygit.package = pkgs.yaziPlugins.lazygit;
-      convert.package = pkgs.yaziPlugins.convert;
       ouch.package = pkgs.yaziPlugins.ouch;
       zoom.package = pkgs.yaziPlugins.zoom;
       mount.package = pkgs.yaziPlugins.mount;
+      chmod.package = pkgs.yaziPlugins.chmod;
+      git = {
+        setup = true;
+        package = pkgs.yaziPlugins.git;
+      };
+      image-convert = {
+        package = inputs.yazi-plugins + "/image-convert.yazi";
+        setup = true;
+        settings = {
+          strip = true;
+        };
+      };
+      video-convert = {
+        package = inputs.yazi-plugins + "/video-convert.yazi";
+        setup = true;
+        settings = {
+          gif = {
+            fps = "18";
+          };
+        };
+      };
       restore = {
         package = pkgs.yaziPlugins.restore;
         setup = true;
       };
       bookmarks = {
-        package = pkgs.yaziPlugins.bookmarks;
+        package = inputs.yazi-plugins + "/bookmarks.yazi";
         setup = true;
         settings = {
           last_directory = {
@@ -52,6 +78,11 @@
     keymap = {
       mgr.prepend_keymap = [
         {
+          on = "<C-m>";
+          run = ["plugin chmod"];
+          decs = "Chmod on selected file";
+        }
+        {
           on = "y";
           run = ["yank" "plugin clip -- --action=copy"];
           desc = "Yank selected files (copy)";
@@ -72,19 +103,9 @@
           desc = "run lazygit";
         }
         {
-          on = ["c" "p"];
-          run = "plugin convert -- --extension='png'";
-          desc = "[PNG] Convert";
-        }
-        {
-          on = ["c" "j"];
-          run = "plugin convert -- --extension='jpg'";
-          desc = "[JPG] Convert";
-        }
-        {
-          on = ["c" "w"];
-          run = "plugin convert -- --extension='webp'";
-          desc = "[WEBP] Convert";
+          on = ["c" "i"];
+          run = "plugin image-convert";
+          desc = "Convert image";
         }
         {
           on = ["u"];
@@ -121,11 +142,6 @@
           run = "enter";
         }
         {
-          on = ["B"];
-          run = "plugin bookmarks all_bookbarks";
-          desc = "Jump to a bookmark";
-        }
-        {
           on = ["'"];
           run = "plugin bookmarks jump";
           desc = "Jump to a bookmark";
@@ -144,6 +160,11 @@
           on = ["b" "D"];
           run = "plugin bookmarks delete_all";
           desc = "Delete all bookmark";
+        }
+        {
+          on = ["c" "v"];
+          run = "plugin video-convert";
+          desc = "Convert video file";
         }
       ];
     };
@@ -166,6 +187,18 @@
       };
 
       plugin = {
+        prepend_fetchers = [
+          {
+            url = "*";
+            run = "git";
+            group = "git";
+          }
+          {
+            url = "*/";
+            run = "git";
+            group = "git";
+          }
+        ];
         prepend_preloaders = [
           {
             mime = "{audio,video,image}/*";
@@ -178,14 +211,6 @@
           {
             url = "*.{ai,eps,ait}";
             run = "mediainfo";
-          }
-          {
-            mime = "{image}/*";
-            run = "mediainfo --no-metadata";
-          }
-          {
-            mime = "{video}/*";
-            run = "mediainfo --no-preview";
           }
         ];
         prepend_previewers = [
@@ -208,14 +233,6 @@
           {
             mime = "application/{subrip,postscript,illustrator,dvb.ait,vnd.adobe.illustrator,eps}";
             run = "mediainfo";
-          }
-          {
-            mime = "{image}/*";
-            run = "mediainfo --no-metadata";
-          }
-          {
-            mime = "{video}/*";
-            run = "mediainfo --no-preview";
           }
         ];
       };
