@@ -52,8 +52,6 @@
     home-manager,
     nixpkgs,
     nvf,
-    hyprland,
-    gloview,
     sops-nix,
     ...
   }: let
