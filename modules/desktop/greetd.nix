@@ -86,6 +86,6 @@ in {
       XDG_CURRENT_DESKTOP=wayland
     '';
 
-    "greetd/wall.png".source = ../../assets/wallpapers/frutiger_eco.jpg;
+    "greetd/wall.png".source = "${inputs.self}/assets/wallpapers/frutiger_eco.jpg";
   };
 }
